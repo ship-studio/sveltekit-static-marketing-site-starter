@@ -30,6 +30,22 @@ You are running inside the **Ship Studio app**, which handles the development en
 
 ---
 
+## Before Building: Creative Brief
+
+Before writing any code, answer these questions:
+
+1. **What's the core concept?** (Not just "a website" but the specific idea)
+2. **What visual metaphors fit this concept?** (e.g., for a dev parody: terminals, code snippets, GitHub aesthetics)
+3. **What makes this site DIFFERENT from a generic template?**
+4. **How will each section have its own visual identity?** (Don't repeat the same card pattern everywhere)
+5. **What interactive moments could surprise visitors?**
+
+If you can't answer these, you're not ready to build yet.
+
+The skills are useful, but they need to be applied after creative thinking, not instead of it.
+
+---
+
 ## Your Skills
 
 You have specialized skills in `.claude/skills/`. **Use them constantly:**

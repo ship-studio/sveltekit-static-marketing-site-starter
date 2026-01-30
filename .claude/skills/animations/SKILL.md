@@ -272,6 +272,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 <!-- src/lib/components/InView.svelte -->
 <script lang="ts">
   import { onMount } from 'svelte';
+  import { browser } from '$app/environment';
 
   interface Props {
     children: import('svelte').Snippet;
@@ -284,8 +285,17 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
   let element: HTMLElement;
   let isVisible = $state(false);
+  let prefersReducedMotion = $state(false);
 
   onMount(() => {
+    // Respect user's motion preferences
+    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      isVisible = true;
+      return;
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -324,18 +334,20 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 ```svelte
 <!-- src/routes/+layout.svelte -->
 <script lang="ts">
-  import { page } from '$app/stores';
+  import { page } from '$app/state';
   import { fade } from 'svelte/transition';
 
   let { children } = $props();
 </script>
 
-{#key $page.url.pathname}
+{#key page.url.pathname}
   <div in:fade={{ duration: 200, delay: 200 }} out:fade={{ duration: 200 }}>
     {@render children()}
   </div>
 {/key}
 ```
+
+> **Note:** In Svelte 5/SvelteKit 2, use `$app/state` instead of `$app/stores`. The `page` object is reactive without needing `$page`.
 
 ---
 

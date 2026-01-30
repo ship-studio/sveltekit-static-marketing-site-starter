@@ -16,6 +16,15 @@ This skill guides users through adding Sanity CMS to make their website content 
 - User asks about "making text/images editable"
 - User wants to "update content themselves"
 
+## MCP Tools Available
+
+This project has a Sanity MCP server configured. Check for available Sanity tools by looking at the MCP server list. If Sanity MCP tools are available, use them for:
+- Creating/updating schemas
+- Managing content
+- Querying data
+
+Use the manual setup below only if MCP tools aren't available or for initial project setup.
+
 ## What is Sanity? (Explain Simply)
 
 > "Sanity is like a Google Doc for your website. You edit text and images in a friendly dashboard, and your website automatically updates. No coding needed after we set it up."
@@ -54,8 +63,10 @@ This will prompt for:
 ### Step 3: Install SvelteKit Dependencies
 
 ```bash
-npm install @sanity/client @sanity/image-url
+npm install @sanity/client
 ```
+
+> **Note:** `@sanity/image-url` is optional - only install if you need image URL transformations.
 
 ### Step 4: Environment Variables
 

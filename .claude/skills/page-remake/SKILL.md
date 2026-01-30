@@ -27,29 +27,46 @@ This skill transforms existing web pages into your own version. It captures the 
 
 ---
 
-## Phase 1: Screenshot the Original
+## Prerequisites
 
-### Using Playwright MCP
+Before starting, check what tools are available:
 
-Navigate to the URL and capture a full-page screenshot:
+1. **Check for Playwright MCP:** Look for `playwright` in `.mcp.json`. If configured, you can capture screenshots.
+2. **Fallback to WebFetch:** If no Playwright, use WebFetch to analyze the page content.
+
+---
+
+## Phase 1: Capture the Original
+
+### Option A: Using Playwright MCP (if available)
+
+If Playwright MCP is configured, use these tools to capture screenshots:
+
+1. **Navigate:** Use `mcp_playwright_browser_navigate` with the URL
+2. **Wait:** Allow page to fully load (animations, images)
+3. **Screenshot:** Use `mcp_playwright_browser_screenshot` to capture
+4. **Save:** Store in `static/references/` for ongoing comparison
+
+### Option B: Using WebFetch (fallback)
+
+If Playwright is not available, use the `WebFetch` tool to analyze the page:
 
 ```
-1. Use browser_navigate to go to the URL
-2. Wait for the page to fully load (give it a moment for images/animations)
-3. Use browser_screenshot to capture the full page
-4. Save screenshot to static/references/ for ongoing comparison
+WebFetch with:
+- url: [the target URL]
+- prompt: "Analyze this page's design in detail. Describe: 1) Color palette (hex values if visible), 2) Typography style, 3) Layout structure section by section, 4) Visual elements and decorations, 5) Navigation style, 6) Footer content. Be specific and thorough."
 ```
 
 ### Screenshot Storage
 
-Create the references directory if it doesn't exist:
+Create the references directory if screenshots are captured:
 ```
 static/
 └── references/
     └── original-[sitename]-[date].png
 ```
 
-**Tell the user:** "I'm taking a screenshot of [URL] so I can study its design. This will be my reference as I rebuild each section."
+**Tell the user:** "I'm analyzing [URL] to study its design. This will be my reference as I rebuild each section."
 
 ---
 

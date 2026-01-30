@@ -108,7 +108,7 @@ Svelte 5 uses snippets instead of slots:
 {@render children()}
 
 <footer class="p-4 bg-gray-100 mt-8">
-  &copy; 2024 My Site
+  &copy; {new Date().getFullYear()} My Site
 </footer>
 ```
 

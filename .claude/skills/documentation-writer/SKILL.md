@@ -7,9 +7,30 @@ description: Maintain clear, non-technical documentation for website projects. U
 
 This skill ensures documentation stays current and accessible for non-technical users. SITE.md is the single source of truth for what a website contains.
 
+## File Location
+
+**SITE.md must be created in the project root directory** (same level as `package.json` and `src/`).
+
+```
+project-root/
+├── SITE.md          ← HERE
+├── package.json
+├── src/
+└── ...
+```
+
 ## Core Principle
 
 **Update documentation immediately after every change.** Non-developers rely on SITE.md to understand their site. Outdated docs cause confusion and frustration.
+
+## Automatic Triggers
+
+This skill should be invoked automatically after:
+- Any file is created in `src/routes/`
+- Any file is edited in `src/routes/` or `src/lib/components/`
+- Colors or fonts are changed in `app.css` or layout files
+- Images are added to `static/`
+- The navigation or footer is modified
 
 ## SITE.md Structure
 

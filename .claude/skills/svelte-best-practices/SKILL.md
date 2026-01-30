@@ -231,6 +231,95 @@ If you use the same combination often, create a component:
 {/if}
 ```
 
+## Advanced Svelte 5 Patterns
+
+### Reading State Without Tracking
+
+Use `untrack()` when you need to read a value without creating a dependency:
+
+```svelte
+<script lang="ts">
+  import { untrack } from 'svelte';
+
+  let count = $state(0);
+  let lastSaved = $state(0);
+
+  $effect(() => {
+    // This effect runs when count changes
+    // but reading lastSaved won't re-trigger it
+    const current = count;
+    const previous = untrack(() => lastSaved);
+    console.log(`Count changed from ${previous} to ${current}`);
+  });
+</script>
+```
+
+### Using $state.raw for Large Data
+
+For large arrays/objects that don't need deep reactivity:
+
+```svelte
+<script lang="ts">
+  // Good for large datasets - no deep proxy overhead
+  let items = $state.raw<Item[]>([]);
+
+  async function loadItems() {
+    const data = await fetch('/api/items').then(r => r.json());
+    items = data; // Reassignment triggers update
+  }
+</script>
+```
+
+### Pre-Effects for DOM Measurements
+
+Use `$effect.pre()` when you need to run before DOM updates:
+
+```svelte
+<script lang="ts">
+  let messages = $state<string[]>([]);
+  let container: HTMLElement;
+  let shouldScroll = false;
+
+  $effect.pre(() => {
+    // Check scroll position BEFORE new messages render
+    if (container) {
+      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 10;
+      shouldScroll = isAtBottom;
+    }
+  });
+
+  $effect(() => {
+    // Scroll AFTER new messages render
+    if (shouldScroll && container) {
+      container.scrollTop = container.scrollHeight;
+    }
+  });
+</script>
+```
+
+### Class-Based State
+
+```svelte
+<script lang="ts">
+  class Counter {
+    count = $state(0);
+    doubled = $derived(this.count * 2);
+
+    increment() {
+      this.count++;
+    }
+  }
+
+  const counter = new Counter();
+</script>
+
+<button onclick={() => counter.increment()}>
+  {counter.count} (doubled: {counter.doubled})
+</button>
+```
+
+---
+
 ## Performance Checklist
 
 Before shipping, verify:
@@ -238,8 +327,10 @@ Before shipping, verify:
 - [ ] Images have width/height attributes
 - [ ] Below-fold images use `loading="lazy"`
 - [ ] No unnecessary state (use `$derived` when possible)
+- [ ] Use `$state.raw()` for large non-reactive data
 - [ ] Components are reasonably sized
 - [ ] Expensive operations are debounced
 - [ ] All images have alt text
 - [ ] Semantic HTML is used
 - [ ] Interactive elements are keyboard accessible
+- [ ] `prefers-reduced-motion` is respected for animations

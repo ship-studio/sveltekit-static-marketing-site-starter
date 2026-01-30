@@ -39,3 +39,117 @@ Interpret creatively and make unexpected choices that feel genuinely designed fo
 **IMPORTANT**: Match implementation complexity to the aesthetic vision. Maximalist designs need elaborate code with extensive animations and effects. Minimalist or refined designs need restraint, precision, and careful attention to spacing, typography, and subtle details. Elegance comes from executing the vision well.
 
 Remember: Claude is capable of extraordinary creative work. Don't hold back—show what can truly be created when thinking outside the box and committing fully to a distinctive vision.
+
+---
+
+## Example Patterns
+
+### Distinctive Hero Section
+
+```svelte
+<script lang="ts">
+  let { headline, subheadline } = $props();
+</script>
+
+<section class="relative min-h-[90vh] flex items-center overflow-hidden">
+  <!-- Subtle grain texture overlay -->
+  <div class="absolute inset-0 opacity-[0.03] pointer-events-none"
+       style="background-image: url('data:image/svg+xml,...')"></div>
+
+  <!-- Asymmetric layout -->
+  <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-[1.2fr,1fr] gap-16 items-center">
+    <div class="space-y-8">
+      <h1 class="text-5xl md:text-7xl font-display font-bold tracking-tight text-stone-900 leading-[1.1]">
+        {headline}
+      </h1>
+      <p class="text-xl text-stone-600 max-w-lg leading-relaxed">
+        {subheadline}
+      </p>
+      <div class="flex gap-4">
+        <button class="px-8 py-4 bg-stone-900 text-white rounded-full hover:bg-stone-800 transition-colors">
+          Get Started
+        </button>
+      </div>
+    </div>
+
+    <!-- Visual element with intentional offset -->
+    <div class="relative lg:-mr-24">
+      <div class="aspect-4/3 rounded-3xl bg-linear-to-br from-amber-100 to-orange-50 shadow-2xl"></div>
+    </div>
+  </div>
+</section>
+```
+
+### Card with Personality
+
+```svelte
+<script lang="ts">
+  let { title, description, accent = 'rose' } = $props();
+
+  const accentClasses = {
+    rose: 'group-hover:bg-rose-500',
+    amber: 'group-hover:bg-amber-500',
+    emerald: 'group-hover:bg-emerald-500'
+  };
+</script>
+
+<article class="group relative p-8 bg-white rounded-2xl border border-stone-200 hover:border-stone-300 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
+  <!-- Accent line that animates on hover -->
+  <div class="absolute top-0 left-8 right-8 h-1 bg-stone-200 rounded-full overflow-hidden">
+    <div class="h-full w-0 group-hover:w-full {accentClasses[accent]} transition-all duration-500"></div>
+  </div>
+
+  <h3 class="mt-4 text-xl font-semibold text-stone-900">{title}</h3>
+  <p class="mt-3 text-stone-600 leading-relaxed">{description}</p>
+</article>
+```
+
+### Animated Stats Section
+
+```svelte
+<script lang="ts">
+  const stats = [
+    { value: '10K+', label: 'Happy customers' },
+    { value: '99.9%', label: 'Uptime' },
+    { value: '24/7', label: 'Support' }
+  ];
+</script>
+
+<section class="py-24 bg-stone-900 text-white">
+  <div class="max-w-5xl mx-auto px-6">
+    <div class="grid md:grid-cols-3 gap-12 text-center">
+      {#each stats as stat, i}
+        <div class="space-y-2" style="animation: fadeUp 0.6s ease-out {i * 0.1}s both">
+          <div class="text-5xl font-bold tracking-tight">{stat.value}</div>
+          <div class="text-stone-400">{stat.label}</div>
+        </div>
+      {/each}
+    </div>
+  </div>
+</section>
+
+<style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+```
+
+---
+
+## Integration with Other Skills
+
+| Need | Skill to Reference |
+|------|-------------------|
+| Color palette decisions | `brand-identity` |
+| Section architecture | `marketing-site-design` |
+| Copy and headlines | `copywriting` |
+| Animations and motion | `animations` |
+| Code patterns | `svelte-sveltekit-expert` |

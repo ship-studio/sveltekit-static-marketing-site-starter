@@ -293,6 +293,8 @@ For large arrays/objects that don't need deep reactivity:
 
 ### Using $state.eager for Immediate UI Updates
 
+> **Version Requirement:** `$state.eager` requires **Svelte 5.41.0+**. Check your package.json before using.
+
 When state changes need to reflect immediately (useful for navigation feedback):
 
 ```svelte
@@ -359,6 +361,27 @@ Use `$effect.pre()` when you need to run before DOM updates:
 
 ---
 
+---
+
+## Debugging
+
+### Using $inspect for Development
+
+```svelte
+<script lang="ts">
+  let count = $state(0);
+  let user = $state({ name: 'Alice' });
+
+  // Logs whenever these values change
+  $inspect(count);
+  $inspect('User:', user);
+</script>
+```
+
+> **Note:** `$inspect` is automatically stripped from production builds.
+
+---
+
 ## Performance Checklist
 
 Before shipping, verify:
@@ -374,4 +397,5 @@ Before shipping, verify:
 - [ ] Semantic HTML is used
 - [ ] Interactive elements are keyboard accessible
 - [ ] `prefers-reduced-motion` is respected for animations
+- [ ] Used `$inspect` during development to verify reactivity
 - [ ] Code validated with `mcp__svelte__svelte-autofixer`

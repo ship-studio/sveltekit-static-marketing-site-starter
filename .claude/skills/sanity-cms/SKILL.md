@@ -77,8 +77,10 @@ Create/update `.env`:
 ```env
 PUBLIC_SANITY_PROJECT_ID="[from sanity init]"
 PUBLIC_SANITY_DATASET="production"
-PUBLIC_SANITY_API_VERSION="2024-01-01"
+PUBLIC_SANITY_API_VERSION="2026-01-01"
 ```
+
+> **Note:** The API version should use the current date (YYYY-MM-DD format). Update this to today's date when setting up a new project.
 
 ### Step 5: Create Sanity Client
 

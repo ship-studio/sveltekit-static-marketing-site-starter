@@ -7,6 +7,15 @@ description: Expert guidance for SvelteKit 2 with Svelte 5 development. Use this
 
 Expert guidance for SvelteKit 2 with Svelte 5 (runes). This project uses static site generation.
 
+## Version Requirements
+
+This skill assumes:
+- **Svelte 5.20+** (for `$props.id()`)
+- **SvelteKit 2.12+** (for `$app/state`)
+- **Tailwind CSS 4.x** (for `bg-linear-*` syntax)
+
+Check your `package.json` to verify versions. Some features noted below require specific minimum versions.
+
 ## File-Based Routing
 
 ```
@@ -60,6 +69,8 @@ Usage:
 ```
 
 ## Unique IDs with $props.id()
+
+> **Version Requirement:** `$props.id()` requires **Svelte 5.20.0+**. Check your package.json before using.
 
 Generate consistent IDs for form elements (works with SSR):
 
@@ -224,6 +235,51 @@ Use lowercase event names:
 6. **Don't use `on:click`** - Use `onclick` (Svelte 5 syntax)
 7. **Don't use `<slot>`** - Use snippets with `{@render children()}`
 
+## Debugging with $inspect
+
+Use `$inspect` to log reactive values during development (automatically stripped in production):
+
+```svelte
+<script lang="ts">
+  let count = $state(0);
+  let user = $state({ name: 'Alice' });
+
+  // Logs whenever count or user changes
+  $inspect(count);
+  $inspect(user);
+
+  // With custom label
+  $inspect('User state:', user);
+</script>
+```
+
+> **Note:** `$inspect` only works during development. It's removed from production builds.
+
+---
+
+## Reading State Without Tracking
+
+Use `untrack()` when you need to read a value without creating a reactive dependency:
+
+```svelte
+<script lang="ts">
+  import { untrack } from 'svelte';
+
+  let count = $state(0);
+  let lastSaved = $state(0);
+
+  $effect(() => {
+    // This effect runs when count changes
+    // but reading lastSaved won't re-trigger it
+    const current = count;
+    const previous = untrack(() => lastSaved);
+    console.log(`Changed from ${previous} to ${current}`);
+  });
+</script>
+```
+
+---
+
 ## Advanced State Patterns
 
 ### $state.raw() - Large Data Without Deep Reactivity
@@ -290,6 +346,8 @@ For derivations that need more than a single expression:
 | `on:click={handler}` | `onclick={handler}` |
 | `<slot />` | `{@render children()}` |
 | N/A | `$bindable()` for two-way binding |
-| N/A | `$props.id()` for unique IDs |
+| N/A | `$props.id()` for unique IDs (5.20+) |
 | N/A | `$state.raw()` for large data |
 | N/A | `$state.snapshot()` for external libs |
+| N/A | `$inspect()` for debugging |
+| N/A | `untrack()` to read without tracking |

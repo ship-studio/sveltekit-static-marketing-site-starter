@@ -71,16 +71,28 @@ WebFetch with:
 
 ### Option B: Using Playwright MCP (If Configured)
 
-If Playwright MCP tools are available, you can capture visual screenshots for reference. Check `.mcp.json` for Playwright configuration.
+If Playwright MCP tools are available, you can capture visual screenshots for reference.
 
-**To find available Playwright tools:**
-1. Check the MCP tool list in your environment
-2. Look for tools containing "browser", "playwright", or "screenshot"
-3. Common patterns include navigate + screenshot tool combinations
+**Checking for Playwright availability:**
+1. Look in `.mcp.json` for a Playwright server configuration
+2. If configured, look for tools like:
+   - `mcp__playwright__navigate` - Navigate to a URL
+   - `mcp__playwright__screenshot` - Capture screenshots
+   - `mcp__playwright__browser_action` - General browser control
 
-Use these to capture full-page screenshots and save to `static/references/`.
+**If Playwright is NOT configured:**
+- Use Option A (WebFetch) instead—it's always available and works well for design analysis
+- WebFetch extracts page structure, colors, and layout patterns from HTML/CSS
+- For visual reference, ask the user to provide screenshots manually
 
-> **Note:** Playwright MCP tool names vary by implementation. If unsure, use Option A (WebFetch) which is always available.
+**If Playwright IS configured:**
+```
+1. Navigate to the target URL
+2. Capture a full-page screenshot
+3. Save to static/references/original-[sitename]-[date].png
+```
+
+> **Recommendation:** WebFetch (Option A) is usually sufficient for understanding page structure and branding. Playwright screenshots are a nice-to-have for visual reference but not required.
 
 ### Screenshot Storage
 

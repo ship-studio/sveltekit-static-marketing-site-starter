@@ -15,6 +15,6 @@
 	<meta name="description" content="Build marketing sites with Claude Code. No coding required." />
 </svelte:head>
 
-<div class="font-[family-name:var(--font-body)] antialiased">
+<div class="font-sans antialiased">
 	{@render children()}
 </div>

@@ -68,31 +68,31 @@ These fonts work well but are everywhere. Consider whether you need distinction:
 Always pair a **display font** (headings) with a **body font**:
 
 **Modern & Clean:**
-- Display: Space Grotesk / Body: DM Sans
-- Display: Outfit / Body: Source Sans 3
-- Display: Sora / Body: Nunito
+- [Space Grotesk](https://fonts.google.com/specimen/Space+Grotesk) + [DM Sans](https://fonts.google.com/specimen/DM+Sans)
+- [Outfit](https://fonts.google.com/specimen/Outfit) + [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3)
+- [Sora](https://fonts.google.com/specimen/Sora) + [Nunito](https://fonts.google.com/specimen/Nunito)
 
 **Elegant & Refined:**
-- Display: Playfair Display / Body: Lato
-- Display: Cormorant Garamond / Body: Montserrat
-- Display: Fraunces / Body: Work Sans
+- [Playfair Display](https://fonts.google.com/specimen/Playfair+Display) + [Lato](https://fonts.google.com/specimen/Lato)
+- [Cormorant Garamond](https://fonts.google.com/specimen/Cormorant+Garamond) + [Montserrat](https://fonts.google.com/specimen/Montserrat)
+- [Fraunces](https://fonts.google.com/specimen/Fraunces) + [Work Sans](https://fonts.google.com/specimen/Work+Sans)
 
 **Bold & Energetic:**
-- Display: Bebas Neue / Body: Public Sans
-- Display: Oswald / Body: Karla
-- Display: Anton / Body: Rubik
+- [Bebas Neue](https://fonts.google.com/specimen/Bebas+Neue) + [Public Sans](https://fonts.google.com/specimen/Public+Sans)
+- [Oswald](https://fonts.google.com/specimen/Oswald) + [Karla](https://fonts.google.com/specimen/Karla)
+- [Anton](https://fonts.google.com/specimen/Anton) + [Rubik](https://fonts.google.com/specimen/Rubik)
 
 **Warm & Approachable:**
-- Display: Poppins / Body: Nunito Sans
-- Display: Quicksand / Body: Open Sans (acceptable as body only)
-- Display: Comfortaa / Body: Mulish
+- [Poppins](https://fonts.google.com/specimen/Poppins) + [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans)
+- [Quicksand](https://fonts.google.com/specimen/Quicksand) + [Open Sans](https://fonts.google.com/specimen/Open+Sans) (acceptable as body only)
+- [Comfortaa](https://fonts.google.com/specimen/Comfortaa) + [Mulish](https://fonts.google.com/specimen/Mulish)
 
 **Creative & Artistic:**
-- Display: Righteous / Body: Lexend
-- Display: Archivo Black / Body: Work Sans
-- Display: Josefin Sans / Body: Source Sans 3
+- [Righteous](https://fonts.google.com/specimen/Righteous) + [Lexend](https://fonts.google.com/specimen/Lexend)
+- [Archivo Black](https://fonts.google.com/specimen/Archivo+Black) + [Work Sans](https://fonts.google.com/specimen/Work+Sans)
+- [Josefin Sans](https://fonts.google.com/specimen/Josefin+Sans) + [Source Sans 3](https://fonts.google.com/specimen/Source+Sans+3)
 
-> **Important:** Always verify font availability at [fonts.google.com](https://fonts.google.com) before using. Font libraries change over time.
+> **Important:** All fonts above have been verified on Google Fonts as of January 2026. Click the links to preview and get embed codes.
 
 ### Font Fallback Stacks
 

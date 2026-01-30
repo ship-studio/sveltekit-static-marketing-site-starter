@@ -333,6 +333,8 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ### Using SvelteKit's Navigation
 
+> **Version Requirement:** The `$app/state` module requires **SvelteKit 2.12+**. For earlier versions, use `$app/stores` with the `$page` store instead.
+
 ```svelte
 <!-- src/routes/+layout.svelte -->
 <script lang="ts">
@@ -349,7 +351,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 {/key}
 ```
 
-> **Note:** In Svelte 5/SvelteKit 2, use `$app/state` instead of `$app/stores`. The `page` object is reactive without needing `$page`.
+> **Note:** In SvelteKit 2.12+, use `$app/state` instead of `$app/stores`. The `page` object is reactive without needing the `$page` store prefix.
 
 ---
 

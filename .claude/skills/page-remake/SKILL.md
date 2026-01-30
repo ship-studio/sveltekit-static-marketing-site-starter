@@ -8,6 +8,27 @@ user_invocable: true
 
 This skill transforms existing web pages into your own version. It captures the essence of the original and rebuilds it in your codebase.
 
+---
+
+## Important: Legal & Ethical Guidelines
+
+**When remaking a site, you MUST:**
+- Create ORIGINAL content inspired by the reference (never copy text verbatim)
+- Design your OWN visual elements (never copy logos, icons, or trademarked images)
+- Write FRESH copy that captures the tone but uses different words
+- Use your own imagery (placeholders or licensed stock photos)
+
+**NEVER copy:**
+- Logos or brand marks
+- Trademarked content or slogans
+- Proprietary icons or illustrations
+- Exact copy/text word-for-word
+- Unique visual assets that belong to the original site
+
+**The goal is to learn from great design, not plagiarize it.**
+
+---
+
 ## When to Trigger
 
 **Automatically run this skill when user says:**
@@ -50,11 +71,16 @@ WebFetch with:
 
 ### Option B: Using Playwright MCP (If Configured)
 
-If Playwright MCP tools are available, you can capture visual screenshots for reference. Check `.mcp.json` for Playwright configuration. Tool names vary by MCP implementation - common patterns include:
-- `browser_navigate` / `browser_screenshot`
-- `playwright_navigate` / `playwright_screenshot`
+If Playwright MCP tools are available, you can capture visual screenshots for reference. Check `.mcp.json` for Playwright configuration.
+
+**To find available Playwright tools:**
+1. Check the MCP tool list in your environment
+2. Look for tools containing "browser", "playwright", or "screenshot"
+3. Common patterns include navigate + screenshot tool combinations
 
 Use these to capture full-page screenshots and save to `static/references/`.
+
+> **Note:** Playwright MCP tool names vary by implementation. If unsure, use Option A (WebFetch) which is always available.
 
 ### Screenshot Storage
 

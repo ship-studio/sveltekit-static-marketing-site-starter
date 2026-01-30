@@ -190,13 +190,49 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
 ## Fetching Content in SvelteKit
 
-### Using Load Functions
+> **Important: Static Site Compatibility**
+>
+> This project uses `adapter-static` for static site generation. Server-side load functions (`+page.server.ts`) require either:
+> 1. **Prerendering** (recommended): Add `export const prerender = true` to generate pages at build time
+> 2. **Client-side fetching**: Use `+page.ts` or fetch in the component with `browser` check
+>
+> For most marketing sites, prerendering is the best approach—content is fetched at build time and pages are static.
+
+### Option 1: Prerendered (Recommended for Static Sites)
 
 ```typescript
 // src/routes/+page.server.ts
 import { client } from '$lib/sanity'
 
+// This tells SvelteKit to fetch data at BUILD time, not runtime
+export const prerender = true
+
 export async function load() {
+  const content = await client.fetch(`
+    *[_type == "homepage"][0] {
+      heroHeadline,
+      heroSubheadline,
+      heroCtaText,
+      heroCtaLink,
+      heroImage
+    }
+  `)
+
+  return { content }
+}
+```
+
+### Option 2: Client-Side Fetching (For Dynamic Content)
+
+```typescript
+// src/routes/+page.ts (note: NOT +page.server.ts)
+import { browser } from '$app/environment'
+import { client } from '$lib/sanity'
+
+export async function load() {
+  // Only fetch on client side for static builds
+  if (!browser) return { content: null }
+
   const content = await client.fetch(`
     *[_type == "homepage"][0] {
       heroHeadline,
@@ -269,9 +305,11 @@ Studio runs at `http://localhost:3333`
 - [ ] Sanity client created
 - [ ] Schemas created for editable content
 - [ ] Pages updated to fetch from Sanity
+- [ ] **Prerender enabled** for static site compatibility (`export const prerender = true`)
 - [ ] Fallback values for empty content
 - [ ] Studio accessible at localhost:3333
 - [ ] User understands how to edit content
+- [ ] User understands they need to rebuild site after content changes (for prerendered pages)
 
 ## Explaining to Non-Technical Users
 

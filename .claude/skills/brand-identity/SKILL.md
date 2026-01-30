@@ -89,10 +89,24 @@ Always pair a **display font** (headings) with a **body font**:
 
 **Creative & Artistic:**
 - Display: Righteous / Body: Lexend
-- Display: Archivo Black / Body: Albert Sans
-- Display: Unbounded / Body: Figtree
+- Display: Archivo Black / Body: Work Sans
+- Display: Josefin Sans / Body: Source Sans 3
 
-> **Note:** Some fonts listed (Unbounded, Figtree, Albert Sans) are newer Google Fonts. Always verify availability at [fonts.google.com](https://fonts.google.com) before using.
+> **Important:** Always verify font availability at [fonts.google.com](https://fonts.google.com) before using. Font libraries change over time.
+
+### Font Fallback Stacks
+
+Always include fallbacks for reliability:
+
+```css
+/* Example with fallbacks */
+--font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+--font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+
+/* Serif example */
+--font-display: "Playfair Display", ui-serif, Georgia, serif;
+--font-body: "Lato", ui-sans-serif, system-ui, sans-serif;
+```
 
 ### Implementation in SvelteKit
 
@@ -195,6 +209,8 @@ When building, CHECK every component against:
 - [ ] Colors feel distinctive (not just Tailwind defaults)
 - [ ] Layout has visual interest (not all centered/equal)
 - [ ] 60-30-10 color rule followed
-- [ ] Fonts loaded via Google Fonts
+- [ ] Fonts loaded via Google Fonts with fallback stacks
+- [ ] Font availability verified at fonts.google.com
 - [ ] At least ONE distinctive design choice per page
 - [ ] Design feels intentional and human
+- [ ] CSS variables defined for colors and fonts (maintainability)

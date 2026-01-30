@@ -72,6 +72,22 @@ Use these skills automatically when you detect these patterns:
 | After ANY file change in `src/` | Update `SITE.md` using documentation-writer |
 | Unsure about Svelte 5 syntax | Use `mcp__svelte__get-documentation` |
 
+### Quick Skill Router
+
+When user mentions these words, use the corresponding skill:
+
+| User Says | Primary Skill | Also Use |
+|-----------|---------------|----------|
+| "colors", "fonts", "brand", "style" | brand-identity | frontend-design |
+| "copy", "text", "headline", "CTA", "write" | copywriting | - |
+| "section", "layout", "hero", "page structure" | marketing-site-design | frontend-design |
+| "animate", "motion", "transition", "hover" | animations | - |
+| "CMS", "edit myself", "sanity", "editable" | /sanity-cms | documentation-writer |
+| URL + "remake/rebuild/copy/like this" | /page-remake | all skills |
+| "new project", "start fresh" | /onboarding | - |
+| "optimize", "performance", "faster" | /optimize | svelte-best-practices |
+| Building any component/page | svelte-sveltekit-expert | frontend-design, svelte-code-writer |
+
 ### Pre-flight Checklist
 
 **Before responding to ANY build request, verify:**
@@ -102,10 +118,25 @@ Use these skills automatically when you detect these patterns:
 
 **AFTER writing any `.svelte` file:**
 1. Run `mcp__svelte__svelte-autofixer` on the code
-2. Fix any issues the autofixer identifies
-3. Update `SITE.md` using documentation-writer guidelines
+2. Review and fix any issues identified
+3. Re-run autofixer until NO issues remain
+4. Update `SITE.md` using documentation-writer guidelines
 
-**This is NOT optional.** Skipping these steps leads to inconsistent designs and confused users.
+**This is NOT optional.** Skipping these steps leads to broken code and confused users.
+
+### Code Quality Gate
+
+**BEFORE marking any Svelte task as complete, verify:**
+
+- [ ] Code uses Svelte 5 runes (`$state`, `$props`, `$derived`, `$effect`)
+- [ ] TypeScript interfaces defined for component props
+- [ ] `mcp__svelte__svelte-autofixer` run on the code
+- [ ] All autofixer suggestions addressed
+- [ ] Autofixer re-run until clean (no remaining issues)
+- [ ] `SITE.md` updated with what changed
+- [ ] User informed in plain English
+
+**DO NOT skip the autofixer steps.** It catches real errors that will break the site.
 
 ### MCP Tools Available
 
@@ -161,6 +192,8 @@ Common fonts like Inter, Roboto, and system fonts work well but are everywhere. 
 - Comfortaa + Mulish
 
 These aren't rules—they're starting points. The right font depends on the brand.
+
+> **Note:** Always verify font availability at [fonts.google.com](https://fonts.google.com) before using. Include fallback fonts in your CSS.
 
 ### Color Guidance
 
@@ -281,6 +314,8 @@ static/                  # Images and static files
 - Explain what you did in simple terms
 - Make intentional, distinctive design choices
 - Use Svelte 5 runes syntax (`$state`, `$props`, `$derived`, `$effect`)
+- Define TypeScript interfaces for component props
+- Run `mcp__svelte__svelte-autofixer` on all `.svelte` files before finishing
 
 ### DON'T:
 

@@ -129,6 +129,10 @@ Generates a Svelte REPL playground link for code sharing.
 | Transitions | `transition:`, `svelte/transition` |
 | Lifecycle | `$effect`, `lifecycle-hooks` |
 | SSR/SSG | `page-options`, `adapter-static` |
+| Navigation state | `$app/state`, `$app/navigation` |
+| Advanced state | `svelte/reactivity`, `$state` |
+
+> **Tip:** Use `mcp__svelte__list-sections` first to see all available sections with their use cases, then fetch the relevant ones.
 
 ---
 
@@ -138,3 +142,16 @@ Generates a Svelte REPL playground link for code sharing.
 2. **Always validate before finalizing** - Run autofixer on every component
 3. **These are MCP tools, not CLI commands** - Call them directly as tools
 4. **Check package.json for version** - Read it to confirm Svelte version if uncertain
+5. **Autofixer returns suggestions** - Review and apply fixes manually, then re-run until clean
+
+## Mandatory Validation Workflow
+
+**BEFORE marking any Svelte task complete:**
+
+1. Run `mcp__svelte__svelte-autofixer` with the full component code
+2. Review suggestions returned
+3. Fix any issues identified
+4. Re-run autofixer until no issues remain
+5. Only THEN respond to the user
+
+This is NOT optional. Skipping validation leads to broken code that frustrates users.

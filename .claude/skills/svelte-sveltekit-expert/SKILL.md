@@ -224,6 +224,61 @@ Use lowercase event names:
 6. **Don't use `on:click`** - Use `onclick` (Svelte 5 syntax)
 7. **Don't use `<slot>`** - Use snippets with `{@render children()}`
 
+## Advanced State Patterns
+
+### $state.raw() - Large Data Without Deep Reactivity
+
+For large arrays or objects where you don't need deep reactivity (better performance):
+
+```svelte
+<script lang="ts">
+  // No deep proxy overhead - only reassignment triggers updates
+  let items = $state.raw<Item[]>([]);
+
+  async function loadItems() {
+    const data = await fetch('/api/items').then(r => r.json());
+    items = data; // Reassignment triggers update, mutation does not
+  }
+</script>
+```
+
+### $state.snapshot() - For External Libraries
+
+When passing state to libraries that don't expect proxies (like `structuredClone`, analytics, or APIs):
+
+```svelte
+<script lang="ts">
+  let formData = $state({ name: '', email: '' });
+
+  async function submit() {
+    // Get a plain object, not a proxy
+    const data = $state.snapshot(formData);
+    await fetch('/api/submit', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+  }
+</script>
+```
+
+### $derived.by() - Complex Derivations
+
+For derivations that need more than a single expression:
+
+```svelte
+<script lang="ts">
+  let items = $state<Item[]>([]);
+
+  let stats = $derived.by(() => {
+    const total = items.length;
+    const completed = items.filter(i => i.done).length;
+    return { total, completed, remaining: total - completed };
+  });
+</script>
+```
+
+---
+
 ## Svelte 4 vs Svelte 5 Quick Reference
 
 | Svelte 4 | Svelte 5 |
@@ -236,3 +291,5 @@ Use lowercase event names:
 | `<slot />` | `{@render children()}` |
 | N/A | `$bindable()` for two-way binding |
 | N/A | `$props.id()` for unique IDs |
+| N/A | `$state.raw()` for large data |
+| N/A | `$state.snapshot()` for external libs |

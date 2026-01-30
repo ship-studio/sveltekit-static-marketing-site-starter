@@ -26,6 +26,7 @@ Then implement working code (Svelte components with TypeScript) that is:
 - Visually striking and memorable
 - Cohesive with a clear aesthetic point-of-view
 - Meticulously refined in every detail
+- Properly typed with TypeScript interfaces
 
 ## Frontend Aesthetics Guidelines
 
@@ -52,7 +53,12 @@ Remember: Claude is capable of extraordinary creative work. Don't hold back—sh
 
 ```svelte
 <script lang="ts">
-  let { headline, subheadline } = $props();
+  interface Props {
+    headline: string;
+    subheadline: string;
+  }
+
+  let { headline, subheadline }: Props = $props();
 </script>
 
 <section class="relative min-h-[90vh] flex items-center overflow-hidden">
@@ -88,9 +94,15 @@ Remember: Claude is capable of extraordinary creative work. Don't hold back—sh
 
 ```svelte
 <script lang="ts">
-  let { title, description, accent = 'rose' } = $props();
+  interface Props {
+    title: string;
+    description: string;
+    accent?: 'rose' | 'amber' | 'emerald';
+  }
 
-  const accentClasses = {
+  let { title, description, accent = 'rose' }: Props = $props();
+
+  const accentClasses: Record<string, string> = {
     rose: 'group-hover:bg-rose-500',
     amber: 'group-hover:bg-amber-500',
     emerald: 'group-hover:bg-emerald-500'

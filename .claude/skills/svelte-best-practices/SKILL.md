@@ -291,6 +291,24 @@ For large arrays/objects that don't need deep reactivity:
 </script>
 ```
 
+### Using $state.eager for Immediate UI Updates
+
+When state changes need to reflect immediately (useful for navigation feedback):
+
+```svelte
+<script lang="ts">
+  let pathname = $state('/');
+</script>
+
+<nav>
+  <!-- $state.eager ensures aria-current updates immediately on click -->
+  <a href="/" aria-current={$state.eager(pathname) === '/' ? 'page' : null}>Home</a>
+  <a href="/about" aria-current={$state.eager(pathname) === '/about' ? 'page' : null}>About</a>
+</nav>
+```
+
+> **Note:** Use `$state.eager` sparingly—only for providing immediate feedback in response to user actions. In general, let Svelte coordinate updates for better UX.
+
 ### Pre-Effects for DOM Measurements
 
 Use `$effect.pre()` when you need to run before DOM updates:
@@ -349,9 +367,11 @@ Before shipping, verify:
 - [ ] Below-fold images use `loading="lazy"`
 - [ ] No unnecessary state (use `$derived` when possible)
 - [ ] Use `$state.raw()` for large non-reactive data
+- [ ] Use `$state.snapshot()` when passing state to external libraries
 - [ ] Components are reasonably sized
 - [ ] Expensive operations are debounced
 - [ ] All images have alt text
 - [ ] Semantic HTML is used
 - [ ] Interactive elements are keyboard accessible
 - [ ] `prefers-reduced-motion` is respected for animations
+- [ ] Code validated with `mcp__svelte__svelte-autofixer`

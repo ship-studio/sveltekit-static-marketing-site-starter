@@ -40,6 +40,38 @@ src/routes/
 </script>
 ```
 
+## Two-Way Binding with $bindable
+
+For components that need two-way binding with their parent:
+
+```svelte
+<!-- src/lib/components/Slider.svelte -->
+<script lang="ts">
+  let { value = $bindable(50), min = 0, max = 100 } = $props();
+</script>
+
+<input type="range" bind:value {min} {max} />
+<span>{value}</span>
+```
+
+Usage:
+```svelte
+<Slider bind:value={volume} />
+```
+
+## Unique IDs with $props.id()
+
+Generate consistent IDs for form elements (works with SSR):
+
+```svelte
+<script lang="ts">
+  const id = $props.id();
+</script>
+
+<label for="{id}-email">Email</label>
+<input id="{id}-email" type="email" />
+```
+
 ## Component Patterns
 
 **Page component:**
@@ -202,3 +234,5 @@ Use lowercase event names:
 | `$: { console.log(x) }` | `$effect(() => { console.log(x) })` |
 | `on:click={handler}` | `onclick={handler}` |
 | `<slot />` | `{@render children()}` |
+| N/A | `$bindable()` for two-way binding |
+| N/A | `$props.id()` for unique IDs |

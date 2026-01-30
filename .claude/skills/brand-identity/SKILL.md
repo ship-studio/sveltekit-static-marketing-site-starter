@@ -1,6 +1,8 @@
 ---
 name: brand-identity
 description: Guides distinctive brand colors, typography, and visual choices. Contains human-first design principles to ensure sites look intentional and memorable.
+user_invocable: true
+invocation: /brand
 ---
 
 # Brand Identity Skill
@@ -89,6 +91,8 @@ Always pair a **display font** (headings) with a **body font**:
 - Display: Righteous / Body: Lexend
 - Display: Archivo Black / Body: Albert Sans
 - Display: Unbounded / Body: Figtree
+
+> **Note:** Some fonts listed (Unbounded, Figtree, Albert Sans) are newer Google Fonts. Always verify availability at [fonts.google.com](https://fonts.google.com) before using.
 
 ### Implementation in SvelteKit
 

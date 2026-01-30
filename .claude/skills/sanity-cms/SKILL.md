@@ -63,10 +63,12 @@ This will prompt for:
 ### Step 3: Install SvelteKit Dependencies
 
 ```bash
+# Required - the Sanity client
 npm install @sanity/client
-```
 
-> **Note:** `@sanity/image-url` is optional - only install if you need image URL transformations.
+# Optional - only if you need image URL transformations
+npm install @sanity/image-url
+```
 
 ### Step 4: Environment Variables
 
@@ -81,6 +83,21 @@ PUBLIC_SANITY_API_VERSION="2024-01-01"
 ### Step 5: Create Sanity Client
 
 Create `src/lib/sanity.ts`:
+
+**Basic setup (text content only):**
+
+```typescript
+import { createClient } from '@sanity/client'
+
+export const client = createClient({
+  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+  apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
+  useCdn: true, // Set to false for preview/draft content
+})
+```
+
+**With image support (requires `@sanity/image-url`):**
 
 ```typescript
 import { createClient } from '@sanity/client'

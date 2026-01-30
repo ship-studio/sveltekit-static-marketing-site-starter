@@ -1,6 +1,8 @@
 ---
 name: svelte-best-practices
 description: Performance optimization and best practices for Svelte 5 applications. Use this skill when optimizing components, managing state, or ensuring the site performs well.
+user_invocable: true
+invocation: /optimize
 ---
 
 # Svelte Best Practices
@@ -251,6 +253,25 @@ Use `untrack()` when you need to read a value without creating a dependency:
     const previous = untrack(() => lastSaved);
     console.log(`Count changed from ${previous} to ${current}`);
   });
+</script>
+```
+
+### Using $state.snapshot for External Libraries
+
+When passing reactive state to external libraries (like `structuredClone`, analytics, or APIs that don't expect proxies):
+
+```svelte
+<script lang="ts">
+  let formData = $state({ name: '', email: '' });
+
+  async function submit() {
+    // Get a plain object snapshot (not a proxy)
+    const data = $state.snapshot(formData);
+    await fetch('/api/submit', {
+      method: 'POST',
+      body: JSON.stringify(data)
+    });
+  }
 </script>
 ```
 

@@ -1,6 +1,8 @@
 ---
 name: animations
 description: Create gorgeous micro-interactions and animations using CSS and Svelte transitions. Use this skill when adding motion to components, page transitions, scroll animations, or any interactive elements that need polish.
+user_invocable: true
+invocation: /animate
 ---
 
 # Animations Skill
@@ -258,9 +260,9 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 <section
   bind:this={element}
-  class="transition-all duration-600 ease-out {isVisible
+  class="transition-all duration-500 ease-out {isVisible
     ? 'opacity-100 translate-y-0'
-    : 'opacity-0 translate-y-10'}"
+    : 'opacity-0 translate-y-8'}"
 >
   Content appears on scroll
 </section>

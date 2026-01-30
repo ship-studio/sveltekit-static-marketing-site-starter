@@ -38,7 +38,7 @@ You have specialized skills in `.claude/skills/`. **Use them constantly:**
 | --------------------------- | -------------------------------------------- | -------------- |
 | **onboarding**              | New project setup, no SITE.md exists         | `/onboarding`  |
 | **page-remake**             | User provides URL to remake/rebuild/recreate | `/page-remake` |
-| **brand-identity**          | Choosing colors, fonts, visual direction     | Auto           |
+| **brand-identity**          | Choosing colors, fonts, visual direction     | `/brand`       |
 | **copywriting**             | Writing any text for the site                | Auto           |
 | **marketing-site-design**   | Planning page layouts, sections              | Auto           |
 | **sanity-cms**              | User wants editable content/CMS              | `/sanity-cms`  |
@@ -46,8 +46,8 @@ You have specialized skills in `.claude/skills/`. **Use them constantly:**
 | **svelte-sveltekit-expert** | Writing any Svelte/SvelteKit code            | Auto           |
 | **svelte-code-writer**      | Svelte MCP tools for docs & code validation  | Auto           |
 | **frontend-design**         | Creating any visual component                | Auto           |
-| **animations**              | Adding micro-interactions and motion         | Auto           |
-| **svelte-best-practices**   | Performance optimization                     | Auto           |
+| **animations**              | Adding micro-interactions and motion         | `/animate`     |
+| **svelte-best-practices**   | Performance optimization                     | `/optimize`    |
 
 ### Workflow for Every Build Task
 
@@ -71,6 +71,41 @@ Use these skills automatically when you detect these patterns:
 | User mentions "CMS" or "edit content myself" | Run `/sanity-cms` skill |
 | After ANY file change in `src/` | Update `SITE.md` using documentation-writer |
 | Unsure about Svelte 5 syntax | Use `mcp__svelte__get-documentation` |
+
+### Pre-flight Checklist
+
+**Before responding to ANY build request, verify:**
+
+- [ ] Does `SITE.md` exist? If not → Run `/onboarding` FIRST
+- [ ] Have I read `SITE.md` for brand/personality context?
+- [ ] Did user provide a URL to copy? → Run `/page-remake`
+- [ ] Does user want CMS/editable content? → Run `/sanity-cms`
+
+### Skill Chaining Order
+
+**For building a new page, follow this sequence:**
+
+1. **onboarding** (if no SITE.md)
+2. **marketing-site-design** → Plan section architecture
+3. **brand-identity** → Visual decisions (colors, fonts)
+4. **copywriting** → Write all text content
+5. **frontend-design** + **svelte-sveltekit-expert** → Implement
+6. **svelte-code-writer** → Validate with MCP autofixer
+7. **animations** → Add motion and polish
+8. **documentation-writer** → Update SITE.md
+
+### Mandatory Workflow Enforcement
+
+**BEFORE writing any `.svelte` file:**
+1. If `SITE.md` doesn't exist → Run `/onboarding` FIRST
+2. Read `SITE.md` for brand context
+
+**AFTER writing any `.svelte` file:**
+1. Run `mcp__svelte__svelte-autofixer` on the code
+2. Fix any issues the autofixer identifies
+3. Update `SITE.md` using documentation-writer guidelines
+
+**This is NOT optional.** Skipping these steps leads to inconsistent designs and confused users.
 
 ### MCP Tools Available
 

@@ -17,6 +17,10 @@ Before coding, understand the context and commit to a BOLD aesthetic direction:
 
 **CRITICAL**: Choose a clear conceptual direction and execute it with precision. Bold maximalism and refined minimalism both work - the key is intentionality, not intensity.
 
+**Note:** This project uses **Tailwind CSS v4**, which has different syntax than v3:
+- Gradients: `bg-linear-to-br` (not `bg-gradient-to-br`)
+- Arbitrary values: `aspect-4/3` works directly (no brackets needed)
+
 Then implement working code (Svelte components with TypeScript) that is:
 - Production-grade and functional
 - Visually striking and memorable

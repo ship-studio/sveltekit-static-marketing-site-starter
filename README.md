@@ -48,15 +48,15 @@ The design tokens in `src/app.css` define your site's visual identity:
 
 ```css
 :root {
-  /* Colors */
-  --background: #fafaf9;
-  --foreground: #1c1917;
-  --muted: #78716c;
-  --accent: #dc2626;
+	/* Colors */
+	--background: #fafaf9;
+	--foreground: #1c1917;
+	--muted: #78716c;
+	--accent: #dc2626;
 
-  /* Typography */
-  --font-display: "Space Grotesk", sans-serif;
-  --font-body: "DM Sans", sans-serif;
+	/* Typography */
+	--font-display: 'Space Grotesk', sans-serif;
+	--font-body: 'DM Sans', sans-serif;
 }
 ```
 
@@ -73,13 +73,13 @@ src/routes/pricing/+page.svelte  →  yoursite.com/pricing
 
 ## Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `npm run dev` | Start dev server at localhost:5173 |
-| `npm run build` | Build for production (outputs to `build/`) |
-| `npm run preview` | Preview production build locally |
-| `npm run check` | Run TypeScript and Svelte checks |
-| `npm run format` | Format code with Prettier |
+| Command           | Description                                |
+| ----------------- | ------------------------------------------ |
+| `npm run dev`     | Start dev server at localhost:5173         |
+| `npm run build`   | Build for production (outputs to `build/`) |
+| `npm run preview` | Preview production build locally           |
+| `npm run check`   | Run TypeScript and Svelte checks           |
+| `npm run format`  | Format code with Prettier                  |
 
 ## Deployment
 

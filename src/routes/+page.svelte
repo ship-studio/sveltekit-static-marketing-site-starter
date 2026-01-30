@@ -15,12 +15,8 @@
 	<main class="mx-auto max-w-3xl px-6 py-16 sm:py-24">
 		<!-- Welcome Hero -->
 		<header class="mb-16">
-			<p class="mb-3 text-sm font-medium uppercase tracking-wider text-muted">
-				Welcome to
-			</p>
-			<h1
-				class="mb-4 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl"
-			>
+			<p class="mb-3 text-sm font-medium uppercase tracking-wider text-muted">Welcome to</p>
+			<h1 class="mb-4 font-display text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
 				Ship Studio
 			</h1>
 			<p class="text-lg text-muted">
@@ -30,11 +26,7 @@
 
 		<!-- Getting Started -->
 		<section class="mb-16">
-			<h2
-				class="mb-6 font-display text-2xl font-semibold text-foreground"
-			>
-				Getting Started
-			</h2>
+			<h2 class="mb-6 font-display text-2xl font-semibold text-foreground">Getting Started</h2>
 			<div class="space-y-6">
 				<div class="flex gap-4">
 					<div
@@ -81,11 +73,7 @@
 
 		<!-- Available Commands -->
 		<section class="mb-16">
-			<h2
-				class="mb-6 font-display text-2xl font-semibold text-foreground"
-			>
-				Available Commands
-			</h2>
+			<h2 class="mb-6 font-display text-2xl font-semibold text-foreground">Available Commands</h2>
 			<div class="space-y-4">
 				<div class="rounded-lg border border-foreground/10 p-4">
 					<code class="text-sm font-semibold text-accent">/onboarding</code>
@@ -111,16 +99,10 @@
 
 		<!-- What You Can Build -->
 		<section class="mb-16">
-			<h2
-				class="mb-6 font-display text-2xl font-semibold text-foreground"
-			>
-				What You Can Build
-			</h2>
+			<h2 class="mb-6 font-display text-2xl font-semibold text-foreground">What You Can Build</h2>
 			<div class="flex flex-wrap gap-3">
 				{#each capabilities as item}
-					<span
-						class="rounded-full border border-foreground/10 px-4 py-2 text-sm text-foreground"
-					>
+					<span class="rounded-full border border-foreground/10 px-4 py-2 text-sm text-foreground">
 						{item}
 					</span>
 				{/each}
@@ -130,9 +112,7 @@
 
 		<!-- Quick Start -->
 		<section class="rounded-lg bg-foreground p-6 text-background">
-			<h2 class="mb-2 font-display text-xl font-semibold">
-				Ready to start?
-			</h2>
+			<h2 class="mb-2 font-display text-xl font-semibold">Ready to start?</h2>
 			<p class="opacity-80">Just describe what you want to build. I'll take it from there.</p>
 		</section>
 	</main>

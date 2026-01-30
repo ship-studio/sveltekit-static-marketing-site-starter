@@ -13,12 +13,14 @@ This skill transforms existing web pages into your own version. It captures the 
 ## Important: Legal & Ethical Guidelines
 
 **When remaking a site, you MUST:**
+
 - Create ORIGINAL content inspired by the reference (never copy text verbatim)
 - Design your OWN visual elements (never copy logos, icons, or trademarked images)
 - Write FRESH copy that captures the tone but uses different words
 - Use your own imagery (placeholders or licensed stock photos)
 
 **NEVER copy:**
+
 - Logos or brand marks
 - Trademarked content or slogans
 - Proprietary icons or illustrations
@@ -32,6 +34,7 @@ This skill transforms existing web pages into your own version. It captures the 
 ## When to Trigger
 
 **Automatically run this skill when user says:**
+
 - "Remake this page: [URL]"
 - "Start from this example: [URL]"
 - "I want my site to look like this: [URL]"
@@ -42,6 +45,7 @@ This skill transforms existing web pages into your own version. It captures the 
 - "Recreate this: [URL]"
 
 **Also trigger when:**
+
 - User shares a URL and asks you to "replicate", "mirror", or "build something similar"
 - User says "I like this website" followed by a URL
 - User provides a screenshot and says "make it like this"
@@ -74,6 +78,7 @@ WebFetch with:
 If Playwright MCP tools are available, you can capture visual screenshots for reference.
 
 **Checking for Playwright availability:**
+
 1. Look in `.mcp.json` for a Playwright server configuration
 2. If configured, look for tools like:
    - `mcp__playwright__navigate` - Navigate to a URL
@@ -81,11 +86,13 @@ If Playwright MCP tools are available, you can capture visual screenshots for re
    - `mcp__playwright__browser_action` - General browser control
 
 **If Playwright is NOT configured:**
+
 - Use Option A (WebFetch) instead—it's always available and works well for design analysis
 - WebFetch extracts page structure, colors, and layout patterns from HTML/CSS
 - For visual reference, ask the user to provide screenshots manually
 
 **If Playwright IS configured:**
+
 ```
 1. Navigate to the target URL
 2. Capture a full-page screenshot
@@ -97,6 +104,7 @@ If Playwright MCP tools are available, you can capture visual screenshots for re
 ### Screenshot Storage
 
 Create the references directory if screenshots are captured:
+
 ```
 static/
 └── references/
@@ -210,17 +218,20 @@ Build each section one at a time, referencing the original screenshot.
 ### Approach-Specific Guidelines
 
 #### For Exact Remake
+
 - Replicate layouts faithfully
 - Match colors as closely as possible
 - Find closest Google Font matches for typography
 - Preserve content structure and hierarchy
 
 #### For Same Brand, Fresh Build
+
 - Use original fonts/colors exactly or find closest matches
 - Preserve the overall brand feel
 - May suggest layout improvements if beneficial
 
 #### For Inspired Remake (Recommended)
+
 - Full creative freedom with design choices
 - Apply human-first design principles
 - Choose distinctive fonts that match the brand feel
@@ -252,6 +263,7 @@ After rebuilding all sections, compare with the original and verify the approach
 ### Checklist
 
 **For All Approaches:**
+
 - [ ] Brand feel is captured
 - [ ] Colors work well together
 - [ ] Typography hierarchy is clear
@@ -265,22 +277,22 @@ After rebuilding all sections, compare with the original and verify the approach
 
 This skill orchestrates multiple other skills:
 
-| Skill | When to Use |
-|-------|-------------|
-| **brand-identity** | Check all color/font choices |
-| **copywriting** | Write all text content (headlines, body, CTAs) |
-| **marketing-site-design** | Section architecture and conversion patterns |
-| **frontend-design** | Visual implementation and creative direction |
-| **svelte-sveltekit-expert** | Code implementation patterns |
-| **documentation-writer** | Update SITE.md after completion |
+| Skill                       | When to Use                                    |
+| --------------------------- | ---------------------------------------------- |
+| **brand-identity**          | Check all color/font choices                   |
+| **copywriting**             | Write all text content (headlines, body, CTAs) |
+| **marketing-site-design**   | Section architecture and conversion patterns   |
+| **frontend-design**         | Visual implementation and creative direction   |
+| **svelte-sveltekit-expert** | Code implementation patterns                   |
+| **documentation-writer**    | Update SITE.md after completion                |
 
 ---
 
 ## Files Created
 
-| File | Location | Purpose |
-|------|----------|---------|
-| `BRAND-ANALYSIS.md` | Project root | Detailed analysis of original |
-| Original screenshot | `static/references/` | Visual reference during build |
-| `SITE.md` | Project root | Updated/created project documentation |
-| Page components | `src/routes/` and `src/lib/` | The rebuilt page |
+| File                | Location                     | Purpose                               |
+| ------------------- | ---------------------------- | ------------------------------------- |
+| `BRAND-ANALYSIS.md` | Project root                 | Detailed analysis of original         |
+| Original screenshot | `static/references/`         | Visual reference during build         |
+| `SITE.md`           | Project root                 | Updated/created project documentation |
+| Page components     | `src/routes/` and `src/lib/` | The rebuilt page                      |

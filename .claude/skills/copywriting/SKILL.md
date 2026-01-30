@@ -12,6 +12,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 **These words can feel generic. Consider more specific alternatives:**
 
 ### Words to Replace with Specifics
+
 - Revolutionize / Revolutionary → describe the actual change
 - Leverage → use, apply, take advantage of
 - Synergy / Synergistic → collaboration, teamwork, combined effort
@@ -40,6 +41,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 - Thoughtfully designed → [describe what makes it thoughtful]
 
 ### Phrases to Avoid
+
 - "In today's fast-paced world..." → just get to the point
 - "We're passionate about..." → show, don't tell
 - "Our team of experts..." → specific credentials work better
@@ -61,21 +63,21 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 
 ### Be Specific
 
-| Vague | Specific |
-|-------|----------|
-| "Save time" | "Save 3 hours every week" |
-| "Affordable pricing" | "Plans start at $29/month" |
-| "Fast delivery" | "Delivered in 2 days or less" |
-| "Trusted by thousands" | "Trusted by 12,847 customers" |
-| "Improve your results" | "Increase conversions by 34%" |
-| "Quality service" | "4.9 stars from 2,400 reviews" |
+| Vague                  | Specific                       |
+| ---------------------- | ------------------------------ |
+| "Save time"            | "Save 3 hours every week"      |
+| "Affordable pricing"   | "Plans start at $29/month"     |
+| "Fast delivery"        | "Delivered in 2 days or less"  |
+| "Trusted by thousands" | "Trusted by 12,847 customers"  |
+| "Improve your results" | "Increase conversions by 34%"  |
+| "Quality service"      | "4.9 stars from 2,400 reviews" |
 
 ### Use Active Voice
 
-| Passive | Active |
-|---------|--------|
-| "Your order will be shipped" | "We ship your order" |
-| "Results can be seen in..." | "See results in..." |
+| Passive                            | Active                      |
+| ---------------------------------- | --------------------------- |
+| "Your order will be shipped"       | "We ship your order"        |
+| "Results can be seen in..."        | "See results in..."         |
 | "Appointments are scheduled by..." | "Schedule your appointment" |
 
 ### Keep It Short
@@ -90,26 +92,32 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 ## Headline Formulas That Work
 
 ### The "Get X Without Y" Formula
+
 > "Get more customers without spending more on ads"
 > "Build muscle without living at the gym"
 
 ### The Specific Number Formula
+
 > "5 ways to double your email open rates"
 > "The 3-step system for stress-free meal planning"
 
 ### The "For [Audience]" Formula
+
 > "Project management for teams that hate project management"
 > "Accounting software for people who aren't accountants"
 
 ### The Outcome Formula
+
 > "Wake up to a clean inbox every morning"
 > "Finally understand your website analytics"
 
 ### The Question Formula
+
 > "What if your website actually brought in leads?"
 > "Tired of [common pain point]?"
 
 ### The How-To Formula
+
 > "How to write emails people actually open"
 > "How [Company] grew from 0 to $1M in 18 months"
 
@@ -118,6 +126,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 ## CTA Button Copy
 
 ### Generic CTAs to Improve
+
 - "Submit" → describe what happens next
 - "Click here" → say where they're going
 - "Learn more" → be specific about what they'll learn
@@ -128,6 +137,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 ### Better CTA Patterns
 
 **Verb + Outcome:**
+
 - "Start my free trial"
 - "Get my custom quote"
 - "See pricing plans"
@@ -135,17 +145,20 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 - "Download the guide"
 
 **Specific + Action:**
+
 - "Join 10,000+ members"
 - "Start saving today"
 - "Create my account"
 - "Send me the templates"
 
 **First-Person:**
+
 - "Show me how it works"
 - "Yes, I want this"
 - "Start my journey"
 
 **Urgency (when genuine):**
+
 - "Claim my spot"
 - "Reserve my seat"
 - "Get instant access"
@@ -155,6 +168,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 ## Tone By Section
 
 ### Hero Section
+
 - **Goal:** Hook attention, promise outcome
 - **Tone:** Confident, direct, benefit-focused
 - **Length:** Headline + 1-2 sentence subheadline
@@ -163,6 +177,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
   > Respond to every message in under 5 minutes with AI that sounds like your best agent.
 
 ### Features Section
+
 - **Goal:** Explain what you offer
 - **Tone:** Clear, specific, benefit-oriented
 - **Length:** Short headline + 1-2 sentences per feature
@@ -172,6 +187,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
   > Automatic reminders ping you before any lead goes cold. Set once, forget forever.
 
 ### Social Proof Section
+
 - **Goal:** Build trust through others
 - **Tone:** Authentic, specific, relatable
 - **Tip:** Real names, real photos, real numbers
@@ -180,6 +196,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
   > — Sarah Chen, Head of Support at Acme
 
 ### Pricing Section
+
 - **Goal:** Make decision easy
 - **Tone:** Transparent, no-pressure, value-focused
 - **Tip:** Anchor with most popular, explain who each tier is for
@@ -189,6 +206,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
   > **Enterprise** — For organizations with complex needs
 
 ### FAQ Section
+
 - **Goal:** Overcome objections
 - **Tone:** Helpful, honest, conversational
 - **Tip:** Use actual customer questions, not softballs
@@ -197,6 +215,7 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
   > No contracts, no cancellation fees. You can leave anytime from your dashboard. We'll even export your data for you.
 
 ### Final CTA Section
+
 - **Goal:** Convert those on the fence
 - **Tone:** Encouraging, low-risk, urgent
 - **Tip:** Remind of value, remove risk
@@ -210,16 +229,16 @@ This skill ensures all website copy sounds human, specific, and persuasive—not
 
 Read SITE.md for brand personality, then adjust:
 
-| Personality | Voice Example |
-|-------------|---------------|
-| Formal + Serious | "Schedule a consultation with our team" |
-| Formal + Playful | "Let's make your taxes slightly less terrible" |
-| Casual + Serious | "We take your security seriously—here's how" |
+| Personality      | Voice Example                                            |
+| ---------------- | -------------------------------------------------------- |
+| Formal + Serious | "Schedule a consultation with our team"                  |
+| Formal + Playful | "Let's make your taxes slightly less terrible"           |
+| Casual + Serious | "We take your security seriously—here's how"             |
 | Casual + Playful | "Finally, software that doesn't make you want to scream" |
-| Luxury | "Experience the difference" |
-| Accessible | "See how it works" |
-| Bold | "Stop wasting time. Start closing deals." |
-| Understated | "Simple tools for complex problems" |
+| Luxury           | "Experience the difference"                              |
+| Accessible       | "See how it works"                                       |
+| Bold             | "Stop wasting time. Start closing deals."                |
+| Understated      | "Simple tools for complex problems"                      |
 
 ---
 

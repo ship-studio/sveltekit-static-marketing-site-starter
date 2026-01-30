@@ -26,9 +26,11 @@ Lists all available Svelte 5 and SvelteKit documentation sections. Each section 
 **Tool:** `mcp__svelte__get-documentation`
 
 **Parameters:**
+
 - `section` (required): Section name(s) to retrieve. Can be a single string or array of strings.
 
 **Examples:**
+
 ```
 section: "$state"
 section: ["$state", "$derived", "$effect"]
@@ -37,6 +39,7 @@ section: ["form-actions", "load"]
 ```
 
 **When to use:**
+
 - Unsure about Svelte 5 syntax
 - Need to verify runes usage
 - Looking up SvelteKit patterns (routing, load functions, etc.)
@@ -51,12 +54,14 @@ section: ["form-actions", "load"]
 Analyzes Svelte code and returns suggestions to fix issues.
 
 **Parameters:**
+
 - `code` (required): The Svelte component source code
 - `desired_svelte_version` (required): Use `5` for Svelte 5 projects
 - `filename` (optional): Component filename (e.g., "Button.svelte")
 - `async` (optional): Set `true` if using async Svelte mode
 
 **When to use:**
+
 - After writing any Svelte component
 - Before committing changes
 - When debugging reactivity issues
@@ -71,22 +76,25 @@ Analyzes Svelte code and returns suggestions to fix issues.
 Generates a Svelte REPL playground link for code sharing.
 
 **Parameters:**
+
 - `name` (required): Name for the playground
 - `tailwind` (required): Set `true` if code uses Tailwind CSS
 - `files` (required): Object mapping filenames to content
 
 **Example:**
+
 ```json
 {
-  "name": "Counter Example",
-  "tailwind": true,
-  "files": {
-    "App.svelte": "<script>let count = $state(0);</script>\n<button onclick={() => count++}>{count}</button>"
-  }
+	"name": "Counter Example",
+	"tailwind": true,
+	"files": {
+		"App.svelte": "<script>let count = $state(0);</script>\n<button onclick={() => count++}>{count}</button>"
+	}
 }
 ```
 
 **When to use:**
+
 - User asks to share or preview code
 - Creating examples for documentation
 - Debugging with minimal reproduction
@@ -120,17 +128,17 @@ Generates a Svelte REPL playground link for code sharing.
 
 ## Common Documentation Lookups
 
-| Task | Sections to Fetch |
-|------|-------------------|
-| State management | `$state`, `$derived`, `$effect` |
-| Component props | `$props`, `$bindable` |
-| Routing | `routing`, `load` |
-| Forms | `form-actions`, `$app/forms` |
-| Transitions | `transition:`, `svelte/transition` |
-| Lifecycle | `$effect`, `lifecycle-hooks` |
-| SSR/SSG | `page-options`, `adapter-static` |
-| Navigation state | `$app/state`, `$app/navigation` |
-| Advanced state | `svelte/reactivity`, `$state` |
+| Task             | Sections to Fetch                  |
+| ---------------- | ---------------------------------- |
+| State management | `$state`, `$derived`, `$effect`    |
+| Component props  | `$props`, `$bindable`              |
+| Routing          | `routing`, `load`                  |
+| Forms            | `form-actions`, `$app/forms`       |
+| Transitions      | `transition:`, `svelte/transition` |
+| Lifecycle        | `$effect`, `lifecycle-hooks`       |
+| SSR/SSG          | `page-options`, `adapter-static`   |
+| Navigation state | `$app/state`, `$app/navigation`    |
+| Advanced state   | `svelte/reactivity`, `$state`      |
 
 > **Tip:** Use `mcp__svelte__list-sections` first to see all available sections with their use cases, then fetch the relevant ones.
 

@@ -15,14 +15,14 @@ Performance and optimization guidelines for Svelte 5 applications.
 
 ```svelte
 <script lang="ts">
-  // Good: Fine-grained state
-  let user = $state({
-    name: 'John',
-    email: 'john@example.com'
-  });
+	// Good: Fine-grained state
+	let user = $state({
+		name: 'John',
+		email: 'john@example.com'
+	});
 
-  // Accessing properties is reactive
-  // Only components using user.name will update when name changes
+	// Accessing properties is reactive
+	// Only components using user.name will update when name changes
 </script>
 
 <p>{user.name}</p>
@@ -32,14 +32,14 @@ Performance and optimization guidelines for Svelte 5 applications.
 
 ```svelte
 <script lang="ts">
-  let { items } = $props();
+	let { items } = $props();
 
-  // Good: Derived from props, no extra state needed
-  let total = $derived(items.reduce((sum, item) => sum + item.price, 0));
+	// Good: Derived from props, no extra state needed
+	let total = $derived(items.reduce((sum, item) => sum + item.price, 0));
 
-  // Bad: Duplicating state
-  // let total = $state(0);
-  // $effect(() => { total = items.reduce(...) });
+	// Bad: Duplicating state
+	// let total = $state(0);
+	// $effect(() => { total = items.reduce(...) });
 </script>
 ```
 
@@ -53,12 +53,12 @@ Split large components into smaller, focused ones:
 <!-- Good: Small, focused component -->
 <!-- src/lib/components/ProductCard.svelte -->
 <script lang="ts">
-  let { product } = $props();
+	let { product } = $props();
 </script>
 
 <article class="p-4 border rounded">
-  <h3>{product.name}</h3>
-  <p>{product.price}</p>
+	<h3>{product.name}</h3>
+	<p>{product.price}</p>
 </article>
 ```
 
@@ -66,20 +66,20 @@ Split large components into smaller, focused ones:
 
 ```svelte
 <script lang="ts">
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-  let HeavyComponent: any = $state(null);
+	let HeavyComponent: any = $state(null);
 
-  onMount(async () => {
-    const module = await import('$lib/components/HeavyComponent.svelte');
-    HeavyComponent = module.default;
-  });
+	onMount(async () => {
+		const module = await import('$lib/components/HeavyComponent.svelte');
+		HeavyComponent = module.default;
+	});
 </script>
 
 {#if HeavyComponent}
-  <svelte:component this={HeavyComponent} />
+	<svelte:component this={HeavyComponent} />
 {:else}
-  <p>Loading...</p>
+	<p>Loading...</p>
 {/if}
 ```
 
@@ -90,12 +90,12 @@ Split large components into smaller, focused ones:
 ```svelte
 <!-- Specify dimensions to prevent layout shift -->
 <img
-  src="/hero.jpg"
-  alt="Hero image"
-  width="1200"
-  height="600"
-  class="w-full h-auto"
-  loading="lazy"
+	src="/hero.jpg"
+	alt="Hero image"
+	width="1200"
+	height="600"
+	class="w-full h-auto"
+	loading="lazy"
 />
 ```
 
@@ -111,14 +111,10 @@ Split large components into smaller, focused ones:
 
 ```svelte
 <!-- Good: Utility classes -->
-<div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow">
-  ...
-</div>
+<div class="flex items-center gap-4 p-4 bg-white rounded-lg shadow">...</div>
 
 <!-- Avoid: Inline styles -->
-<div style="display: flex; align-items: center;">
-  ...
-</div>
+<div style="display: flex; align-items: center;">...</div>
 ```
 
 ### Extract Repeated Patterns
@@ -128,11 +124,11 @@ If you use the same combination often, create a component:
 ```svelte
 <!-- src/lib/components/Card.svelte -->
 <script lang="ts">
-  let { children } = $props();
+	let { children } = $props();
 </script>
 
 <div class="p-6 bg-white rounded-lg shadow-md">
-  {@render children()}
+	{@render children()}
 </div>
 ```
 
@@ -142,23 +138,19 @@ If you use the same combination often, create a component:
 
 ```svelte
 <script lang="ts">
-  let searchQuery = $state('');
-  let debouncedQuery = $state('');
+	let searchQuery = $state('');
+	let debouncedQuery = $state('');
 
-  $effect(() => {
-    const timeout = setTimeout(() => {
-      debouncedQuery = searchQuery;
-    }, 300);
+	$effect(() => {
+		const timeout = setTimeout(() => {
+			debouncedQuery = searchQuery;
+		}, 300);
 
-    return () => clearTimeout(timeout);
-  });
+		return () => clearTimeout(timeout);
+	});
 </script>
 
-<input
-  type="text"
-  value={searchQuery}
-  oninput={(e) => searchQuery = e.currentTarget.value}
-/>
+<input type="text" value={searchQuery} oninput={(e) => (searchQuery = e.currentTarget.value)} />
 ```
 
 ## Accessibility
@@ -191,12 +183,12 @@ If you use the same combination often, create a component:
 
 <!-- Not a button? Add keyboard support -->
 <div
-  role="button"
-  tabindex="0"
-  onclick={handleClick}
-  onkeydown={(e) => e.key === 'Enter' && handleClick()}
+	role="button"
+	tabindex="0"
+	onclick={handleClick}
+	onkeydown={(e) => e.key === 'Enter' && handleClick()}
 >
-  Custom button
+	Custom button
 </div>
 ```
 
@@ -206,30 +198,30 @@ If you use the same combination often, create a component:
 
 ```svelte
 <script lang="ts">
-  let loading = $state(true);
-  let error = $state<string | null>(null);
-  let data = $state<any>(null);
+	let loading = $state(true);
+	let error = $state<string | null>(null);
+	let data = $state<any>(null);
 
-  async function fetchData() {
-    try {
-      loading = true;
-      error = null;
-      const response = await fetch('/api/data');
-      data = await response.json();
-    } catch (e) {
-      error = 'Failed to load data';
-    } finally {
-      loading = false;
-    }
-  }
+	async function fetchData() {
+		try {
+			loading = true;
+			error = null;
+			const response = await fetch('/api/data');
+			data = await response.json();
+		} catch (e) {
+			error = 'Failed to load data';
+		} finally {
+			loading = false;
+		}
+	}
 </script>
 
 {#if loading}
-  <p>Loading...</p>
+	<p>Loading...</p>
 {:else if error}
-  <p class="text-red-600">{error}</p>
+	<p class="text-red-600">{error}</p>
 {:else}
-  <div>{data}</div>
+	<div>{data}</div>
 {/if}
 ```
 
@@ -241,18 +233,18 @@ Use `untrack()` when you need to read a value without creating a dependency:
 
 ```svelte
 <script lang="ts">
-  import { untrack } from 'svelte';
+	import { untrack } from 'svelte';
 
-  let count = $state(0);
-  let lastSaved = $state(0);
+	let count = $state(0);
+	let lastSaved = $state(0);
 
-  $effect(() => {
-    // This effect runs when count changes
-    // but reading lastSaved won't re-trigger it
-    const current = count;
-    const previous = untrack(() => lastSaved);
-    console.log(`Count changed from ${previous} to ${current}`);
-  });
+	$effect(() => {
+		// This effect runs when count changes
+		// but reading lastSaved won't re-trigger it
+		const current = count;
+		const previous = untrack(() => lastSaved);
+		console.log(`Count changed from ${previous} to ${current}`);
+	});
 </script>
 ```
 
@@ -262,16 +254,16 @@ When passing reactive state to external libraries (like `structuredClone`, analy
 
 ```svelte
 <script lang="ts">
-  let formData = $state({ name: '', email: '' });
+	let formData = $state({ name: '', email: '' });
 
-  async function submit() {
-    // Get a plain object snapshot (not a proxy)
-    const data = $state.snapshot(formData);
-    await fetch('/api/submit', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
-  }
+	async function submit() {
+		// Get a plain object snapshot (not a proxy)
+		const data = $state.snapshot(formData);
+		await fetch('/api/submit', {
+			method: 'POST',
+			body: JSON.stringify(data)
+		});
+	}
 </script>
 ```
 
@@ -281,13 +273,13 @@ For large arrays/objects that don't need deep reactivity:
 
 ```svelte
 <script lang="ts">
-  // Good for large datasets - no deep proxy overhead
-  let items = $state.raw<Item[]>([]);
+	// Good for large datasets - no deep proxy overhead
+	let items = $state.raw<Item[]>([]);
 
-  async function loadItems() {
-    const data = await fetch('/api/items').then(r => r.json());
-    items = data; // Reassignment triggers update
-  }
+	async function loadItems() {
+		const data = await fetch('/api/items').then((r) => r.json());
+		items = data; // Reassignment triggers update
+	}
 </script>
 ```
 
@@ -299,13 +291,13 @@ When state changes need to reflect immediately (useful for navigation feedback):
 
 ```svelte
 <script lang="ts">
-  let pathname = $state('/');
+	let pathname = $state('/');
 </script>
 
 <nav>
-  <!-- $state.eager ensures aria-current updates immediately on click -->
-  <a href="/" aria-current={$state.eager(pathname) === '/' ? 'page' : null}>Home</a>
-  <a href="/about" aria-current={$state.eager(pathname) === '/about' ? 'page' : null}>About</a>
+	<!-- $state.eager ensures aria-current updates immediately on click -->
+	<a href="/" aria-current={$state.eager(pathname) === '/' ? 'page' : null}>Home</a>
+	<a href="/about" aria-current={$state.eager(pathname) === '/about' ? 'page' : null}>About</a>
 </nav>
 ```
 
@@ -317,24 +309,25 @@ Use `$effect.pre()` when you need to run before DOM updates:
 
 ```svelte
 <script lang="ts">
-  let messages = $state<string[]>([]);
-  let container: HTMLElement;
-  let shouldScroll = false;
+	let messages = $state<string[]>([]);
+	let container: HTMLElement;
+	let shouldScroll = false;
 
-  $effect.pre(() => {
-    // Check scroll position BEFORE new messages render
-    if (container) {
-      const isAtBottom = container.scrollTop + container.clientHeight >= container.scrollHeight - 10;
-      shouldScroll = isAtBottom;
-    }
-  });
+	$effect.pre(() => {
+		// Check scroll position BEFORE new messages render
+		if (container) {
+			const isAtBottom =
+				container.scrollTop + container.clientHeight >= container.scrollHeight - 10;
+			shouldScroll = isAtBottom;
+		}
+	});
 
-  $effect(() => {
-    // Scroll AFTER new messages render
-    if (shouldScroll && container) {
-      container.scrollTop = container.scrollHeight;
-    }
-  });
+	$effect(() => {
+		// Scroll AFTER new messages render
+		if (shouldScroll && container) {
+			container.scrollTop = container.scrollHeight;
+		}
+	});
 </script>
 ```
 
@@ -342,20 +335,20 @@ Use `$effect.pre()` when you need to run before DOM updates:
 
 ```svelte
 <script lang="ts">
-  class Counter {
-    count = $state(0);
-    doubled = $derived(this.count * 2);
+	class Counter {
+		count = $state(0);
+		doubled = $derived(this.count * 2);
 
-    increment() {
-      this.count++;
-    }
-  }
+		increment() {
+			this.count++;
+		}
+	}
 
-  const counter = new Counter();
+	const counter = new Counter();
 </script>
 
 <button onclick={() => counter.increment()}>
-  {counter.count} (doubled: {counter.doubled})
+	{counter.count} (doubled: {counter.doubled})
 </button>
 ```
 
@@ -369,12 +362,12 @@ Use `$effect.pre()` when you need to run before DOM updates:
 
 ```svelte
 <script lang="ts">
-  let count = $state(0);
-  let user = $state({ name: 'Alice' });
+	let count = $state(0);
+	let user = $state({ name: 'Alice' });
 
-  // Logs whenever these values change
-  $inspect(count);
-  $inspect('User:', user);
+	// Logs whenever these values change
+	$inspect(count);
+	$inspect('User:', user);
 </script>
 ```
 

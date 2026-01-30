@@ -8,8 +8,13 @@
 		children: Snippet;
 	}
 
-	let { variant = 'primary', size = 'md', children, class: className = '', ...rest }: Props =
-		$props();
+	let {
+		variant = 'primary',
+		size = 'md',
+		children,
+		class: className = '',
+		...rest
+	}: Props = $props();
 
 	const baseStyles =
 		'inline-flex items-center justify-center font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent disabled:pointer-events-none disabled:opacity-50';

@@ -22,12 +22,14 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 ## Philosophy
 
 **Animations should be:**
+
 - **Purposeful** - Every animation communicates something
 - **Subtle** - Enhancement, not distraction
 - **Fast** - Users shouldn't wait for animations
 - **Consistent** - Same timing and easing throughout
 
 **Avoid:**
+
 - Animations that block user action
 - Motion for motion's sake
 - Jarring or unexpected movements
@@ -39,12 +41,12 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ### Standard Durations
 
-| Type | Duration | Use Case |
-|------|----------|----------|
-| Micro | 100-150ms | Button hovers, icon changes |
-| Fast | 200-300ms | Fade ins, small movements |
-| Medium | 300-500ms | Page elements, cards |
-| Slow | 500-800ms | Page transitions, large elements |
+| Type   | Duration  | Use Case                         |
+| ------ | --------- | -------------------------------- |
+| Micro  | 100-150ms | Button hovers, icon changes      |
+| Fast   | 200-300ms | Fade ins, small movements        |
+| Medium | 300-500ms | Page elements, cards             |
+| Slow   | 500-800ms | Page transitions, large elements |
 
 ### Recommended Easings
 
@@ -67,15 +69,13 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 <script lang="ts">
-  import { fade, fly, slide, scale, blur } from 'svelte/transition';
+	import { fade, fly, slide, scale, blur } from 'svelte/transition';
 
-  let visible = $state(true);
+	let visible = $state(true);
 </script>
 
 {#if visible}
-  <div transition:fade={{ duration: 300 }}>
-    Fades in and out
-  </div>
+	<div transition:fade={{ duration: 300 }}>Fades in and out</div>
 {/if}
 ```
 
@@ -85,9 +85,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 {#if visible}
-  <div in:fade={{ duration: 300, delay: 0 }}>
-    Content
-  </div>
+	<div in:fade={{ duration: 300, delay: 0 }}>Content</div>
 {/if}
 ```
 
@@ -95,9 +93,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 {#if visible}
-  <div in:fly={{ y: 20, duration: 400 }}>
-    Content slides up
-  </div>
+	<div in:fly={{ y: 20, duration: 400 }}>Content slides up</div>
 {/if}
 ```
 
@@ -105,9 +101,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 {#if visible}
-  <div in:scale={{ start: 0.95, duration: 300 }}>
-    Content scales in
-  </div>
+	<div in:scale={{ start: 0.95, duration: 300 }}>Content scales in</div>
 {/if}
 ```
 
@@ -115,25 +109,23 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 <script lang="ts">
-  import { cubicOut } from 'svelte/easing';
+	import { cubicOut } from 'svelte/easing';
 
-  function customFly(node: HTMLElement, { delay = 0, duration = 400 }) {
-    return {
-      delay,
-      duration,
-      easing: cubicOut,
-      css: (t: number) => `
+	function customFly(node: HTMLElement, { delay = 0, duration = 400 }) {
+		return {
+			delay,
+			duration,
+			easing: cubicOut,
+			css: (t: number) => `
         transform: translateY(${(1 - t) * 20}px);
         opacity: ${t};
       `
-    };
-  }
+		};
+	}
 </script>
 
 {#if visible}
-  <div in:customFly={{ duration: 400 }}>
-    Custom animation
-  </div>
+	<div in:customFly={{ duration: 400 }}>Custom animation</div>
 {/if}
 ```
 
@@ -145,85 +137,96 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 <button class="hover:scale-[1.02] active:scale-[0.98] transition-transform duration-150">
-  Click me
+	Click me
 </button>
 ```
 
 ### Fade Up on Mount (CSS)
 
 ```svelte
+<div class="fade-up">Content</div>
+
 <style>
-  .fade-up {
-    animation: fadeUp 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-  }
+	.fade-up {
+		animation: fadeUp 0.5s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+	}
 
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
 </style>
-
-<div class="fade-up">
-  Content
-</div>
 ```
 
 ### Staggered Children (CSS)
 
 ```svelte
-<style>
-  .stagger-item {
-    opacity: 0;
-    animation: fadeUp 0.4s cubic-bezier(0.33, 1, 0.68, 1) forwards;
-  }
-
-  .stagger-item:nth-child(1) { animation-delay: 0ms; }
-  .stagger-item:nth-child(2) { animation-delay: 100ms; }
-  .stagger-item:nth-child(3) { animation-delay: 200ms; }
-  .stagger-item:nth-child(4) { animation-delay: 300ms; }
-
-  @keyframes fadeUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-</style>
-
 <ul>
-  {#each items as item, i}
-    <li class="stagger-item" style="animation-delay: {i * 100}ms">
-      {item}
-    </li>
-  {/each}
+	{#each items as item, i}
+		<li class="stagger-item" style="animation-delay: {i * 100}ms">
+			{item}
+		</li>
+	{/each}
 </ul>
+
+<style>
+	.stagger-item {
+		opacity: 0;
+		animation: fadeUp 0.4s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+	}
+
+	.stagger-item:nth-child(1) {
+		animation-delay: 0ms;
+	}
+	.stagger-item:nth-child(2) {
+		animation-delay: 100ms;
+	}
+	.stagger-item:nth-child(3) {
+		animation-delay: 200ms;
+	}
+	.stagger-item:nth-child(4) {
+		animation-delay: 300ms;
+	}
+
+	@keyframes fadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(20px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+</style>
 ```
 
 ### Loading Skeleton
 
 ```svelte
-<style>
-  .skeleton {
-    animation: pulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
-  }
-</style>
-
 <div class="h-4 bg-gray-200 rounded skeleton"></div>
+
+<style>
+	.skeleton {
+		animation: pulse 1.5s ease-in-out infinite;
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			opacity: 0.5;
+		}
+		50% {
+			opacity: 1;
+		}
+	}
+</style>
 ```
 
 ---
@@ -234,37 +237,37 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 
 ```svelte
 <script lang="ts">
-  import { onMount } from 'svelte';
+	import { onMount } from 'svelte';
 
-  let element: HTMLElement;
-  let isVisible = $state(false);
+	let element: HTMLElement;
+	let isVisible = $state(false);
 
-  onMount(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            isVisible = true;
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '-50px' }
-    );
+	onMount(() => {
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						isVisible = true;
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.1, rootMargin: '-50px' }
+		);
 
-    observer.observe(element);
+		observer.observe(element);
 
-    return () => observer.disconnect();
-  });
+		return () => observer.disconnect();
+	});
 </script>
 
 <section
-  bind:this={element}
-  class="transition-all duration-500 ease-out {isVisible
-    ? 'opacity-100 translate-y-0'
-    : 'opacity-0 translate-y-8'}"
+	bind:this={element}
+	class="transition-all duration-500 ease-out {isVisible
+		? 'opacity-100 translate-y-0'
+		: 'opacity-0 translate-y-8'}"
 >
-  Content appears on scroll
+	Content appears on scroll
 </section>
 ```
 
@@ -273,57 +276,57 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 ```svelte
 <!-- src/lib/components/InView.svelte -->
 <script lang="ts">
-  import { onMount } from 'svelte';
-  import { browser } from '$app/environment';
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
-  interface Props {
-    children: import('svelte').Snippet;
-    threshold?: number;
-    rootMargin?: string;
-    once?: boolean;
-  }
+	interface Props {
+		children: import('svelte').Snippet;
+		threshold?: number;
+		rootMargin?: string;
+		once?: boolean;
+	}
 
-  let { children, threshold = 0.1, rootMargin = '-50px', once = true }: Props = $props();
+	let { children, threshold = 0.1, rootMargin = '-50px', once = true }: Props = $props();
 
-  let element: HTMLElement;
-  let isVisible = $state(false);
-  let prefersReducedMotion = $state(false);
+	let element: HTMLElement;
+	let isVisible = $state(false);
+	let prefersReducedMotion = $state(false);
 
-  onMount(() => {
-    // Respect user's motion preferences
-    prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	onMount(() => {
+		// Respect user's motion preferences
+		prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    if (prefersReducedMotion) {
-      isVisible = true;
-      return;
-    }
+		if (prefersReducedMotion) {
+			isVisible = true;
+			return;
+		}
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            isVisible = true;
-            if (once) observer.unobserve(entry.target);
-          } else if (!once) {
-            isVisible = false;
-          }
-        });
-      },
-      { threshold, rootMargin }
-    );
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						isVisible = true;
+						if (once) observer.unobserve(entry.target);
+					} else if (!once) {
+						isVisible = false;
+					}
+				});
+			},
+			{ threshold, rootMargin }
+		);
 
-    observer.observe(element);
-    return () => observer.disconnect();
-  });
+		observer.observe(element);
+		return () => observer.disconnect();
+	});
 </script>
 
 <div
-  bind:this={element}
-  class="transition-all duration-500 ease-out {isVisible
-    ? 'opacity-100 translate-y-0'
-    : 'opacity-0 translate-y-6'}"
+	bind:this={element}
+	class="transition-all duration-500 ease-out {isVisible
+		? 'opacity-100 translate-y-0'
+		: 'opacity-0 translate-y-6'}"
 >
-  {@render children()}
+	{@render children()}
 </div>
 ```
 
@@ -338,16 +341,16 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 ```svelte
 <!-- src/routes/+layout.svelte -->
 <script lang="ts">
-  import { page } from '$app/state';
-  import { fade } from 'svelte/transition';
+	import { page } from '$app/state';
+	import { fade } from 'svelte/transition';
 
-  let { children } = $props();
+	let { children } = $props();
 </script>
 
 {#key page.url.pathname}
-  <div in:fade={{ duration: 200, delay: 200 }} out:fade={{ duration: 200 }}>
-    {@render children()}
-  </div>
+	<div in:fade={{ duration: 200, delay: 200 }} out:fade={{ duration: 200 }}>
+		{@render children()}
+	</div>
 {/key}
 ```
 
@@ -358,6 +361,7 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
 ## Performance Tips
 
 1. **Prefer `transform` and `opacity`** - These are GPU-accelerated:
+
    ```css
    /* Good */
    transform: translateX(10px);
@@ -369,19 +373,21 @@ This skill guides the creation of beautiful, purposeful animations using CSS and
    ```
 
 2. **Use `will-change` sparingly:**
+
    ```css
    .animated-element {
-     will-change: transform;
+   	will-change: transform;
    }
    ```
 
 3. **Respect reduced motion:**
+
    ```css
    @media (prefers-reduced-motion: reduce) {
-     * {
-       animation-duration: 0.01ms !important;
-       transition-duration: 0.01ms !important;
-     }
+   	* {
+   		animation-duration: 0.01ms !important;
+   		transition-duration: 0.01ms !important;
+   	}
    }
    ```
 

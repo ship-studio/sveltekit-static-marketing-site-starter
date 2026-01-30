@@ -26,6 +26,7 @@ project-root/
 ## Automatic Triggers
 
 This skill should be invoked automatically after:
+
 - Any file is created in `src/routes/`
 - Any file is edited in `src/routes/` or `src/lib/components/`
 - Colors or fonts are changed in `app.css` or layout files
@@ -40,18 +41,22 @@ This skill should be invoked automatically after:
 ## What's On Your Site
 
 ### Pages
+
 - **Homepage** (`/`) - What visitors see first. Contains [describe sections].
 - **About** (`/about`) - Information about [topic].
 
 ### Shared Elements
+
 - **Navigation bar** - Links to [list pages]. Appears on every page.
 - **Footer** - Contains [describe content].
 
 ## Recent Changes
+
 - [Date]: [What changed in plain English]
 - [Date]: [What changed in plain English]
 
 ## Quick Guide
+
 - To change the site name: [simple instruction]
 - To add a new page: [simple instruction]
 - To change colors: [simple instruction]
@@ -68,6 +73,7 @@ This skill should be invoked automatically after:
 ## When to Update
 
 Update SITE.md after:
+
 - Creating or deleting a page
 - Adding or removing sections
 - Changing navigation or footer
@@ -78,15 +84,19 @@ Update SITE.md after:
 ## Example Updates
 
 **Good:**
+
 > Added a "Contact Us" section at the bottom of the homepage with an email form.
 
 **Bad:**
+
 > Implemented ContactForm component with $state for form handling.
 
 **Good:**
+
 > Changed the button colors from blue to green across the site.
 
 **Bad:**
+
 > Updated primary color CSS variable in app.css.
 
 ## After Every Task

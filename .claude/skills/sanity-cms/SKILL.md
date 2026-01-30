@@ -19,6 +19,7 @@ This skill guides users through adding Sanity CMS to make their website content 
 ## MCP Tools Available
 
 This project has a Sanity MCP server configured. Check for available Sanity tools by looking at the MCP server list. If Sanity MCP tools are available, use them for:
+
 - Creating/updating schemas
 - Managing content
 - Querying data
@@ -30,6 +31,7 @@ Use the manual setup below only if MCP tools aren't available or for initial pro
 > "Sanity is like a Google Doc for your website. You edit text and images in a friendly dashboard, and your website automatically updates. No coding needed after we set it up."
 
 Key benefits for non-technical users:
+
 - Edit text like a Word document
 - Upload and manage images easily
 - Changes go live instantly
@@ -54,6 +56,7 @@ npx sanity@latest init --env
 ```
 
 This will prompt for:
+
 - Project name (use their site name)
 - Default dataset configuration: Yes
 - Project output path: `/sanity` or `/studio`
@@ -89,33 +92,33 @@ Create `src/lib/sanity.ts`:
 **Basic setup (text content only):**
 
 ```typescript
-import { createClient } from '@sanity/client'
+import { createClient } from '@sanity/client';
 
 export const client = createClient({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
-  apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
-  useCdn: true, // Set to false for preview/draft content
-})
+	projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+	dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+	apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
+	useCdn: true // Set to false for preview/draft content
+});
 ```
 
 **With image support (requires `@sanity/image-url`):**
 
 ```typescript
-import { createClient } from '@sanity/client'
-import imageUrlBuilder from '@sanity/image-url'
+import { createClient } from '@sanity/client';
+import imageUrlBuilder from '@sanity/image-url';
 
 export const client = createClient({
-  projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
-  dataset: import.meta.env.PUBLIC_SANITY_DATASET,
-  apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
-  useCdn: true,
-})
+	projectId: import.meta.env.PUBLIC_SANITY_PROJECT_ID,
+	dataset: import.meta.env.PUBLIC_SANITY_DATASET,
+	apiVersion: import.meta.env.PUBLIC_SANITY_API_VERSION,
+	useCdn: true
+});
 
-const builder = imageUrlBuilder(client)
+const builder = imageUrlBuilder(client);
 
 export function urlFor(source: any) {
-  return builder.image(source)
+	return builder.image(source);
 }
 ```
 
@@ -128,51 +131,51 @@ export function urlFor(source: any) {
 Create `sanity/schemas/homepage.ts`:
 
 ```typescript
-import { defineType, defineField } from 'sanity'
+import { defineType, defineField } from 'sanity';
 
 export const homepage = defineType({
-  name: 'homepage',
-  title: 'Homepage',
-  type: 'document',
-  fields: [
-    defineField({
-      name: 'heroHeadline',
-      title: 'Hero Headline',
-      type: 'string',
-      description: 'The main headline at the top of the page',
-    }),
-    defineField({
-      name: 'heroSubheadline',
-      title: 'Hero Subheadline',
-      type: 'text',
-      rows: 2,
-      description: 'The smaller text below the headline',
-    }),
-    defineField({
-      name: 'heroCtaText',
-      title: 'Button Text',
-      type: 'string',
-      description: 'Text on the main call-to-action button',
-    }),
-    defineField({
-      name: 'heroCtaLink',
-      title: 'Button Link',
-      type: 'string',
-      description: 'Where the button goes when clicked',
-    }),
-    defineField({
-      name: 'heroImage',
-      title: 'Hero Image',
-      type: 'image',
-      options: { hotspot: true },
-    }),
-  ],
-  preview: {
-    prepare() {
-      return { title: 'Homepage' }
-    },
-  },
-})
+	name: 'homepage',
+	title: 'Homepage',
+	type: 'document',
+	fields: [
+		defineField({
+			name: 'heroHeadline',
+			title: 'Hero Headline',
+			type: 'string',
+			description: 'The main headline at the top of the page'
+		}),
+		defineField({
+			name: 'heroSubheadline',
+			title: 'Hero Subheadline',
+			type: 'text',
+			rows: 2,
+			description: 'The smaller text below the headline'
+		}),
+		defineField({
+			name: 'heroCtaText',
+			title: 'Button Text',
+			type: 'string',
+			description: 'Text on the main call-to-action button'
+		}),
+		defineField({
+			name: 'heroCtaLink',
+			title: 'Button Link',
+			type: 'string',
+			description: 'Where the button goes when clicked'
+		}),
+		defineField({
+			name: 'heroImage',
+			title: 'Hero Image',
+			type: 'image',
+			options: { hotspot: true }
+		})
+	],
+	preview: {
+		prepare() {
+			return { title: 'Homepage' };
+		}
+	}
+});
 ```
 
 ### Register Schemas
@@ -180,12 +183,12 @@ export const homepage = defineType({
 Update `sanity/schema.ts`:
 
 ```typescript
-import { type SchemaTypeDefinition } from 'sanity'
-import { homepage } from './schemas/homepage'
+import { type SchemaTypeDefinition } from 'sanity';
+import { homepage } from './schemas/homepage';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [homepage],
-}
+	types: [homepage]
+};
 ```
 
 ---
@@ -195,6 +198,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 > **Important: Static Site Compatibility**
 >
 > This project uses `adapter-static` for static site generation. Server-side load functions (`+page.server.ts`) require either:
+>
 > 1. **Prerendering** (recommended): Add `export const prerender = true` to generate pages at build time
 > 2. **Client-side fetching**: Use `+page.ts` or fetch in the component with `browser` check
 >
@@ -204,13 +208,13 @@ export const schema: { types: SchemaTypeDefinition[] } = {
 
 ```typescript
 // src/routes/+page.server.ts
-import { client } from '$lib/sanity'
+import { client } from '$lib/sanity';
 
 // This tells SvelteKit to fetch data at BUILD time, not runtime
-export const prerender = true
+export const prerender = true;
 
 export async function load() {
-  const content = await client.fetch(`
+	const content = await client.fetch(`
     *[_type == "homepage"][0] {
       heroHeadline,
       heroSubheadline,
@@ -218,9 +222,9 @@ export async function load() {
       heroCtaLink,
       heroImage
     }
-  `)
+  `);
 
-  return { content }
+	return { content };
 }
 ```
 
@@ -228,14 +232,14 @@ export async function load() {
 
 ```typescript
 // src/routes/+page.ts (note: NOT +page.server.ts)
-import { browser } from '$app/environment'
-import { client } from '$lib/sanity'
+import { browser } from '$app/environment';
+import { client } from '$lib/sanity';
 
 export async function load() {
-  // Only fetch on client side for static builds
-  if (!browser) return { content: null }
+	// Only fetch on client side for static builds
+	if (!browser) return { content: null };
 
-  const content = await client.fetch(`
+	const content = await client.fetch(`
     *[_type == "homepage"][0] {
       heroHeadline,
       heroSubheadline,
@@ -243,9 +247,9 @@ export async function load() {
       heroCtaLink,
       heroImage
     }
-  `)
+  `);
 
-  return { content }
+	return { content };
 }
 ```
 
@@ -254,13 +258,13 @@ export async function load() {
 ```svelte
 <!-- src/routes/+page.svelte -->
 <script lang="ts">
-  let { data } = $props()
-  const { content } = data
+	let { data } = $props();
+	const { content } = data;
 </script>
 
 <section>
-  <h1>{content?.heroHeadline || 'Welcome'}</h1>
-  <p>{content?.heroSubheadline}</p>
+	<h1>{content?.heroHeadline || 'Welcome'}</h1>
+	<p>{content?.heroSubheadline}</p>
 </section>
 ```
 
@@ -268,17 +272,14 @@ export async function load() {
 
 ```svelte
 <script lang="ts">
-  import { urlFor } from '$lib/sanity'
+	import { urlFor } from '$lib/sanity';
 
-  let { data } = $props()
-  const { content } = data
+	let { data } = $props();
+	const { content } = data;
 </script>
 
 {#if content?.heroImage}
-  <img
-    src={urlFor(content.heroImage).width(1200).url()}
-    alt=""
-  />
+	<img src={urlFor(content.heroImage).width(1200).url()} alt="" />
 {/if}
 ```
 
@@ -318,6 +319,7 @@ Studio runs at `http://localhost:3333`
 After setup, explain:
 
 > "Here's how to update your website now:
+>
 > 1. Go to [Studio URL] and log in
 > 2. Click on 'Homepage' (or whatever you want to edit)
 > 3. Change the text or images

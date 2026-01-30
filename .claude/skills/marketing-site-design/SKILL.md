@@ -26,18 +26,18 @@ The most effective homepage follows this flow (adapt based on SITE.md goals):
 
 ### Section Purposes
 
-| Section | Goal | Visitor Mindset |
-|---------|------|-----------------|
-| Hero | Stop scroll, promise outcome | "What is this?" |
-| Social Proof Bar | Build instant credibility | "Is this legit?" |
-| Problem | Show you understand them | "Do they get me?" |
-| Features | Explain capabilities | "What does it do?" |
-| How It Works | Remove complexity fear | "Is it hard?" |
-| Benefits | Paint the after-state | "What's in it for me?" |
-| Testimonials | Prove others succeeded | "Has it worked for others?" |
-| Pricing | Enable decision | "Can I afford it?" |
-| FAQ | Remove final doubts | "But what about...?" |
-| Final CTA | Convert the convinced | "I'm ready" |
+| Section          | Goal                         | Visitor Mindset             |
+| ---------------- | ---------------------------- | --------------------------- |
+| Hero             | Stop scroll, promise outcome | "What is this?"             |
+| Social Proof Bar | Build instant credibility    | "Is this legit?"            |
+| Problem          | Show you understand them     | "Do they get me?"           |
+| Features         | Explain capabilities         | "What does it do?"          |
+| How It Works     | Remove complexity fear       | "Is it hard?"               |
+| Benefits         | Paint the after-state        | "What's in it for me?"      |
+| Testimonials     | Prove others succeeded       | "Has it worked for others?" |
+| Pricing          | Enable decision              | "Can I afford it?"          |
+| FAQ              | Remove final doubts          | "But what about...?"        |
+| Final CTA        | Convert the convinced        | "I'm ready"                 |
 
 ---
 
@@ -126,11 +126,13 @@ Transform my site →
 ### The F-Pattern
 
 For text-heavy pages (blogs, docs):
+
 - Eye scans horizontally across top
 - Then moves down left side
 - Then scans horizontally again
 
 **Implementation:**
+
 - Most important content in top-left
 - Key info at start of each section
 - Visual breaks to create new scan points
@@ -138,10 +140,12 @@ For text-heavy pages (blogs, docs):
 ### The Z-Pattern
 
 For conversion-focused pages (landing pages):
+
 - Eye moves: top-left → top-right → bottom-left → bottom-right
 - CTA should be at final Z destination
 
 **Implementation:**
+
 - Logo top-left
 - Navigation/secondary CTA top-right
 - Supporting content bottom-left
@@ -157,6 +161,7 @@ For conversion-focused pages (landing pages):
 ### Breaking the Grid (Tastefully)
 
 Ways to add visual interest without chaos:
+
 - One oversized element per section
 - Asymmetric two-column layouts (60/40, 70/30)
 - Overlapping elements (image over background)
@@ -175,6 +180,7 @@ Ways to add visual interest without chaos:
 ```
 
 Or with metrics:
+
 ```
 12M+          4.9★           99.9%
 Users         Rating         Uptime
@@ -183,6 +189,7 @@ Users         Rating         Uptime
 ### Features Section (NOT 3-column grid)
 
 **Option A: Alternating Image/Text**
+
 ```
 [Image]     [Text Block]
 [Text Block]     [Image]
@@ -190,12 +197,14 @@ Users         Rating         Uptime
 ```
 
 **Option B: Bento Grid**
+
 ```
 [Large Feature Card]  [Small]
 [Small] [Small]  [Medium]
 ```
 
 **Option C: Single Feature Focus**
+
 ```
 [Large Screenshot/Demo]
 [3 bullet points below]
@@ -204,6 +213,7 @@ Users         Rating         Uptime
 ### How It Works Section
 
 Always 3 steps (cognitive sweet spot):
+
 ```
 1. Sign Up        2. Connect        3. Grow
 Create account    Link your tools   Watch results
@@ -215,6 +225,7 @@ Use numbered circles or icons, horizontal layout.
 ### Testimonials Section
 
 **Option A: Featured Quote**
+
 ```
 "[Impactful quote]"
 — Name, Title at Company
@@ -222,6 +233,7 @@ Use numbered circles or icons, horizontal layout.
 ```
 
 **Option B: Grid of Cards**
+
 ```
 [Quote + Photo]  [Quote + Photo]
 [Quote + Photo]  [Quote + Photo]
@@ -233,6 +245,7 @@ Only if you have 5+ strong testimonials.
 ### Pricing Section
 
 Always include:
+
 - Clear tier names
 - Who each tier is for
 - Most popular indicator
@@ -243,6 +256,7 @@ Always include:
 ### FAQ Section
 
 Use accordion/expandable pattern:
+
 - Start all closed or first open
 - Group by theme if 8+ questions
 - Include actual objection-handling questions
@@ -252,25 +266,30 @@ Use accordion/expandable pattern:
 ## Conversion Optimization Rules
 
 ### Above the Fold
+
 Must include:
+
 - Clear headline (what you do)
 - Subheadline (how it benefits them)
 - Primary CTA
 - Trust signal (logo bar or brief social proof)
 
 ### CTA Frequency
+
 - Hero: Primary CTA
 - After features: Secondary CTA
 - After testimonials: Primary CTA
 - Fixed in nav: Always visible CTA
 
 ### Reducing Friction
+
 - "No credit card required" under CTA
 - "Cancel anytime" near pricing
 - "Takes 2 minutes" to set expectations
 - Show testimonial near conversion point
 
 ### Mobile Considerations
+
 - Hero headline must work in 2 lines max
 - CTAs must be thumb-reachable
 - Horizontal scrolling elements (logos, testimonials)
@@ -281,18 +300,21 @@ Must include:
 ## Page-Specific Guidelines
 
 ### About Page
+
 - Lead with mission, not history
 - Show real team photos
 - Include company timeline (optional)
 - End with CTA (hiring or contact)
 
 ### Pricing Page
+
 - Lead with value proposition, not prices
 - Comparison table for 3+ tiers
 - FAQ section below pricing
 - Social proof near CTA
 
 ### Contact Page
+
 - Simple form (name, email, message)
 - Alternative contact methods
 - Expected response time

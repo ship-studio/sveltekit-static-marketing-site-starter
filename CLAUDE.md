@@ -63,30 +63,30 @@ You have specialized skills in `.claude/skills/`. **Use them constantly:**
 
 Use these skills automatically when you detect these patterns:
 
-| Trigger | Action |
-|---------|--------|
-| Editing any `.svelte` file | Run `mcp__svelte__svelte-autofixer` before finishing |
-| No `SITE.md` exists | Run `/onboarding` skill immediately |
-| User shares a URL to copy/remake | Run `/page-remake` skill |
-| User mentions "CMS" or "edit content myself" | Run `/sanity-cms` skill |
-| After ANY file change in `src/` | Update `SITE.md` using documentation-writer |
-| Unsure about Svelte 5 syntax | Use `mcp__svelte__get-documentation` |
+| Trigger                                      | Action                                               |
+| -------------------------------------------- | ---------------------------------------------------- |
+| Editing any `.svelte` file                   | Run `mcp__svelte__svelte-autofixer` before finishing |
+| No `SITE.md` exists                          | Run `/onboarding` skill immediately                  |
+| User shares a URL to copy/remake             | Run `/page-remake` skill                             |
+| User mentions "CMS" or "edit content myself" | Run `/sanity-cms` skill                              |
+| After ANY file change in `src/`              | Update `SITE.md` using documentation-writer          |
+| Unsure about Svelte 5 syntax                 | Use `mcp__svelte__get-documentation`                 |
 
 ### Quick Skill Router
 
 When user mentions these words, use the corresponding skill:
 
-| User Says | Primary Skill | Also Use |
-|-----------|---------------|----------|
-| "colors", "fonts", "brand", "style" | brand-identity | frontend-design |
-| "copy", "text", "headline", "CTA", "write" | copywriting | - |
-| "section", "layout", "hero", "page structure" | marketing-site-design | frontend-design |
-| "animate", "motion", "transition", "hover" | animations | - |
-| "CMS", "edit myself", "sanity", "editable" | /sanity-cms | documentation-writer |
-| URL + "remake/rebuild/copy/like this" | /page-remake | all skills |
-| "new project", "start fresh" | /onboarding | - |
-| "optimize", "performance", "faster" | /optimize | svelte-best-practices |
-| Building any component/page | svelte-sveltekit-expert | frontend-design, svelte-code-writer |
+| User Says                                     | Primary Skill           | Also Use                            |
+| --------------------------------------------- | ----------------------- | ----------------------------------- |
+| "colors", "fonts", "brand", "style"           | brand-identity          | frontend-design                     |
+| "copy", "text", "headline", "CTA", "write"    | copywriting             | -                                   |
+| "section", "layout", "hero", "page structure" | marketing-site-design   | frontend-design                     |
+| "animate", "motion", "transition", "hover"    | animations              | -                                   |
+| "CMS", "edit myself", "sanity", "editable"    | /sanity-cms             | documentation-writer                |
+| URL + "remake/rebuild/copy/like this"         | /page-remake            | all skills                          |
+| "new project", "start fresh"                  | /onboarding             | -                                   |
+| "optimize", "performance", "faster"           | /optimize               | svelte-best-practices               |
+| Building any component/page                   | svelte-sveltekit-expert | frontend-design, svelte-code-writer |
 
 ### Pre-flight Checklist
 
@@ -113,10 +113,12 @@ When user mentions these words, use the corresponding skill:
 ### Mandatory Workflow Enforcement
 
 **BEFORE writing any `.svelte` file:**
+
 1. If `SITE.md` doesn't exist → Run `/onboarding` FIRST
 2. Read `SITE.md` for brand context
 
 **AFTER writing any `.svelte` file:**
+
 1. Run `mcp__svelte__svelte-autofixer` on the code
 2. Review and fix any issues identified
 3. Re-run autofixer until NO issues remain
@@ -143,15 +145,18 @@ When user mentions these words, use the corresponding skill:
 This project has MCP servers configured. Use these tools directly:
 
 **Svelte MCP (`mcp__svelte__*`):**
+
 - `mcp__svelte__list-sections` - List available documentation
 - `mcp__svelte__get-documentation` - Fetch specific docs by section name
 - `mcp__svelte__svelte-autofixer` - Validate and fix Svelte code
 - `mcp__svelte__playground-link` - Generate shareable playground links
 
 **Playwright MCP** (if available):
+
 - Browser automation for screenshots and testing
 
 **Sanity MCP** (if authenticated):
+
 - CMS content management
 
 ---

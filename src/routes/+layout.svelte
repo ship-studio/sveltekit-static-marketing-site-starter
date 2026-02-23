@@ -12,7 +12,7 @@
 		rel="stylesheet"
 	/>
 	<title>Ship Studio</title>
-	<meta name="description" content="Build marketing sites with Claude Code. No coding required." />
+	<meta name="description" content="How professionals build with AI. No coding required." />
 </svelte:head>
 
 <div class="font-sans antialiased">

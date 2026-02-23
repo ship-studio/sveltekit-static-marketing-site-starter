@@ -1,11 +1,11 @@
 <script lang="ts">
 	const capabilities = [
 		'Landing pages',
-		'Marketing sites',
+		'Web apps',
 		'Portfolios',
 		'Company websites',
-		'Product pages',
-		'Coming soon pages',
+		'Dashboards',
+		'SaaS products',
 		'Event sites',
 		'Personal sites'
 	];
@@ -20,7 +20,7 @@
 				Ship Studio
 			</h1>
 			<p class="text-lg text-muted">
-				Build marketing sites with Claude Code. Just describe what you want.
+				How professionals build with AI. Just describe what you want.
 			</p>
 		</header>
 
@@ -37,8 +37,7 @@
 					<div>
 						<h3 class="font-semibold text-foreground">Start a conversation</h3>
 						<p class="text-muted">
-							Just type what you want to build. "Create a landing page for my coffee shop" or "I
-							need a portfolio site."
+							Just type what you want to build. A landing page, a web app, a portfolio — anything.
 						</p>
 					</div>
 				</div>
@@ -49,9 +48,9 @@
 						2
 					</div>
 					<div>
-						<h3 class="font-semibold text-foreground">I'll build it</h3>
+						<h3 class="font-semibold text-foreground">AI builds it</h3>
 						<p class="text-muted">
-							Claude handles all the code. You'll see the site come together in real-time.
+							Your AI handles the code. Watch your project come together in real-time.
 						</p>
 					</div>
 				</div>
@@ -107,13 +106,13 @@
 					</span>
 				{/each}
 			</div>
-			<p class="mt-4 text-muted">All without writing a single line of code.</p>
+			<p class="mt-4 text-muted">All built with AI, at professional quality.</p>
 		</section>
 
 		<!-- Quick Start -->
 		<section class="rounded-lg bg-foreground p-6 text-background">
 			<h2 class="mb-2 font-display text-xl font-semibold">Ready to start?</h2>
-			<p class="opacity-80">Just describe what you want to build. I'll take it from there.</p>
+			<p class="opacity-80">Just describe what you want to build. Your AI takes it from there.</p>
 		</section>
 	</main>
 </div>
